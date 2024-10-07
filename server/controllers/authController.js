@@ -95,24 +95,30 @@ const register = async (req, res) => {
   }
 };
 
+//------------------------------------------------
 const dataUri = (file) => {
   const { mimetype, buffer } = file;
   // Convert the buffer to Base64
   const base64 = buffer.toString("base64");
   return `data:${mimetype};base64,${base64}`;
 };
+//------------------------------------------------
 
 const onboard = async (req, res) => {
   const { storeName, storeSlug } = req.body;
   const storeLogo = req.file;
+
   if (!storeName || !storeSlug) {
     return res.status(400).json({ message: "All fields are required!" });
   }
+
   try {
     const checkSlugAvailability = await UserModel.findOne({ storeSlug });
+
     if (checkSlugAvailability) {
       return res.status(400).json({ message: "Store Link not Available!" });
     }
+
     if (!req.file) {
       const store = await UserModel.updateOne(
         { email: req.user.email },
@@ -121,10 +127,13 @@ const onboard = async (req, res) => {
       );
       return res.status(200).json({ message: "Store created successfully!" });
     }
+
     const base64DataUri = dataUri(storeLogo);
+
     const result = await cloudinary.uploader.upload(base64DataUri, {
       folder: "shop",
     });
+
     const store = await UserModel.updateOne(
       { email: req.user.email },
       { storeName, storeSlug, storeLogo: result.secure_url },
@@ -136,4 +145,16 @@ const onboard = async (req, res) => {
   }
 };
 
-export { login, register, onboard };
+const checkStoreCreated = async (req, res) => {
+  try {
+    if(!req.user.storeSlug) {
+      return res.status(400).json({message: "No store created", storeAvailable: false})
+    } else {
+      return res.status(400).json({message: "No store created", storeAvailable: true})
+    }
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+}
+
+export { login, register, onboard, checkStoreCreated };

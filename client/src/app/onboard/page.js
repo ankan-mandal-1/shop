@@ -41,6 +41,7 @@ const OnBoard = () => {
       })
       localStorage.setItem("storeSlug", link)
       toast.success(res.data.message)
+      localStorage.setItem("store", res.data.user)
       router.push("/dashboard")
       setLoading(false)
     } catch (error) {

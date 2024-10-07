@@ -31,6 +31,11 @@
 .hero_content{
   max-width: 600px;
 }
+.trust{
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
 .hero_content h1{
   font-family: var(--font-bricol);
   font-size: 52px;
@@ -216,11 +221,16 @@
 @media screen and (max-width: 1160px) {
   .header {
     padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
   }
   .hero_section {
     flex-direction: column;
     padding: 60px 10px;
     text-align: center;
+    margin-top: 50px;
   }
   .bannerImg{
     width: 100%;

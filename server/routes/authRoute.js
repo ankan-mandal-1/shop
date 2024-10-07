@@ -1,5 +1,5 @@
 import express from "express";
-import { login, onboard, register } from "../controllers/authController.js";
+import { checkStoreCreated, login, onboard, register } from "../controllers/authController.js";
 import upload from "../middlewares/multer.js";
 import authenticate from "../middlewares/authenticate.js";
 const router = express.Router()
@@ -15,5 +15,6 @@ const fileSizeLimitErrorHandler = (err, req, res, next) => {
 router.post("/login", login)
 router.post("/register", register)
 router.post("/onboard", authenticate, upload.single("image"), fileSizeLimitErrorHandler, onboard)
+router.get("/check-store-created-or-not", authenticate, checkStoreCreated)
 
 export default router;

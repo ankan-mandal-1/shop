@@ -15,6 +15,11 @@ const getAllCategory = async (req, res) => {
 
 const createCategory = async (req, res) => {
     const {name} = req.body;
+
+    if(!req.user.storeSlug){
+        return res.status(400).json({message: "Please create a store!"})
+    }
+
     if(!name) {
         return res.status(400).json({message: "Category name required!"})
     }

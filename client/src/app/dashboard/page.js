@@ -1,13 +1,27 @@
+"use client"
 import React from 'react'
 import styles from "./page.module.css"
 import Image from 'next/image'
 import sales from "@/public/assets/sales.png"
 import orders from "@/public/assets/orders.png"
 import link from "@/public/assets/link.png"
+import { useRouter } from 'next/navigation'
 
 const DashboardPage = () => {
 
-  const sale =1234
+  const router = useRouter()
+  const token = localStorage.getItem("token")
+  const store = localStorage.getItem("storeSlug")
+
+  if(!token){
+    router.push("/login")
+  }
+
+  if(!store){
+    router.push("/onboard")
+  }
+
+  const sale = 12345
 
   return (
     <div className="dashboard_container">
@@ -16,8 +30,8 @@ const DashboardPage = () => {
             <div className={styles.icon_title_image}>
               <Image src={sales} alt={"sales"} />
               <span>Sales</span>
-            </div>
-            <p className={styles.revenue}>$ 6,000</p>
+            </div> 
+            <p className={styles.revenue}>$ {sale.toLocaleString()}</p>
             <p className={styles.day}>Today</p>
         </div>
 
