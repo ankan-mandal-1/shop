@@ -1,0 +1,21 @@
+.footer_banner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    color: #252525;
+    padding: 50px 0;
+    border: 1px solid #e1e1e1;
+}
+.banner_box{
+    text-align: center;
+}
+.banner_img{
+    width: 50px;
+    height: auto;
+    text-align: center;
+}
+.banner_icon{
+    display: flex;
+    justify-content: center;
+}

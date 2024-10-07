@@ -1,0 +1,30 @@
+.big_image_content{
+
+}
+.big_image{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+.small_image_content{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+.small_image_content div {
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #d5d5d5;
+}
+.small_image{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}

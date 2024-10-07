@@ -1,0 +1,49 @@
+.container {
+    max-width: 480px;
+    margin: auto;
+    border: 1px solid rgb(238, 238, 238);
+    padding: 10px;
+}
+.logo {
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 30px 0 0 0;
+    object-fit: contain;
+}
+.input_fields {
+    max-width: 280px;
+    margin: 18px auto;
+}
+.upload {
+    border: 1px solid #e1e1e1;
+    background: #e1e1e1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 0;
+    border-radius: 5px;
+    gap: 5px;
+    cursor: pointer;
+}
+.input_fields label {
+    font-size: 16px;
+    color: gray;
+}
+.input_fields input {
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+}
+.input_fields button {
+    width: 100%;
+    background: #4361EE;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}

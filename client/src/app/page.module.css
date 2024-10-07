@@ -1,0 +1,254 @@
+.container {
+  max-width: 1140px;
+  margin: auto;
+}
+.header {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn{
+  font-size: 16px;
+  padding: 15px 20px;
+  border-radius: 5px;
+}
+.transBtn{
+  color: #4361EE;
+}
+.bgBtn{
+  background-color: #4361EE;
+  color: #fff;
+}
+
+/*--------------Hero Section--------*/ 
+.hero_section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0;
+}
+.hero_content{
+  max-width: 600px;
+}
+.hero_content h1{
+  font-family: var(--font-bricol);
+  font-size: 52px;
+  line-height: 1;
+}
+.hero_content p{
+  color: gray;
+  padding: 28px 0 40px 0;
+  font-size: 18px;
+  max-width: 400px;
+}
+.bannerImg{
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+}
+
+/*---------------Demo Section-------------*/
+.demo_section{
+  background-color: #F2F8FF;
+  text-align: center;
+  padding: 80px 0;
+  border-radius: 28px;
+}
+.demo_section h2{
+  font-size: 32px;
+  font-family: var(--font-bricol);
+  padding-bottom: 50px;
+}
+.video {
+  width: 600px;
+    height: 340px;
+    border-radius: 12px;
+    border: none;
+    background-color: #f7f7f7;
+}
+
+/*---------------Why Us---------------*/
+.whyus_section{
+  text-align: center;
+  padding: 80px 0;
+}
+.whyus_section h2{
+  font-size: 32px;
+  font-family: var(--font-bricol);
+  padding-bottom: 50px;
+  
+}
+.whyus_tag{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: left;
+}
+.whyus_img{
+  max-width: 320px;
+  height: auto;
+}
+.whyus_section .content{
+  max-width: 570px;
+}
+.whyus_section h3{
+  font-size: 42px;
+  padding-bottom: 15px;
+  font-family: var(--font-bricol);
+}
+.whyus_section p{
+  color: gray;
+  font-size: 18px;
+}
+
+/*----------------Testimonial Section---------------*/
+.testi_section {
+  background-color: #F2F8FF;
+  text-align: center;
+  padding: 80px 0;
+  border-radius: 28px;
+}
+.testi_content{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+.testi_section h3{
+  font-size: 28px;
+  padding-bottom: 10px;
+  font-family: var(--font-bricol);
+}
+.testi_section .box{
+  border: 1px solid #ebebeb;
+    background: #fff;
+    max-width: 370px;
+    padding: 50px;
+    border-radius: 12px;
+}
+
+/*-----------------Final Section----------*/
+.final_section{
+  padding: 80px 0;
+  text-align: center;
+}
+.final_section h3{
+  font-size: 28px;
+  padding-bottom: 10px;
+  font-family: var(--font-bricol);
+}
+.final_section p{
+  padding: 30px 0 50px;
+}
+
+/*-------------footer---------------*/
+.footer{
+  background-color: #F2F8FF;
+  padding: 80px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 28px;
+}
+.footer p {
+  color: gray
+}
+.footer a{
+  color: gray
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding: 10px;
+  }
+  .header .btn {
+    display: none;
+  }
+  .hero_section {
+    flex-direction: column;
+    padding: 60px 10px;
+    text-align: center;
+  }
+  .hero_section h1{
+    font-size: 28px;
+  }
+  .hero_section p{
+    font-size: 18px;
+  }
+  .bannerImg{
+    width: 100%;
+    margin-top:60px;
+  }
+  .video{
+    width: 90%;
+    margin: 10px;
+  }
+  .whyus_tag{
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+  .whyus_section h3{
+    font-size: 28px;
+  }
+  .column {
+    flex-direction: column-reverse;
+  }
+  .whyus_img{
+    max-width: 220px;
+  }
+  .testi_content{
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+  }
+  .testi_content .box{
+    margin-bottom: 15px;
+  }
+  .footer{
+    flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 80px 10px;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .header {
+    padding: 10px;
+  }
+  .hero_section {
+    flex-direction: column;
+    padding: 60px 10px;
+    text-align: center;
+  }
+  .bannerImg{
+    width: 100%;
+    margin-top:60px;
+  }
+  .whyus_tag{
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+  .column {
+    flex-direction: column-reverse;
+  }
+  .whyus_img{
+    max-width: 220px;
+  }
+  .testi_content{
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+  }
+  .testi_content .box{
+    margin-bottom: 15px;
+  }
+  .footer{
+    flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 80px 10px;
+  }
+}

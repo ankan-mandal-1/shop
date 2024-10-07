@@ -1,0 +1,56 @@
+.content{
+
+}
+.content div{
+    display: flex;
+    flex-direction: column;
+}
+.content h1{
+    margin: 20px 0 0 0;
+    font-size: 28px;
+}
+.content label {
+    font-size: 16px;
+    margin: 20px 0 5px 0;
+}
+.input{
+    border: 1px solid #e1e1e1;
+    padding: 16px;
+    border-radius: 5px;
+    font-family: inherit;
+}
+.image_content{
+    display: flex;
+    flex-direction: row !important;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+.image{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}
+.upload{
+    border: 1px solid #e1e1e1;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    margin: 0 !important;
+}
+.content button {
+    width: 100%;
+    margin: 30px 0;
+    color: #fff;
+    background: #4361EE;
+    border: none;
+    border-radius: 5px;
+    padding: 20px;
+    font-family: inherit;
+}

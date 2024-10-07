@@ -1,0 +1,36 @@
+.input_cont {
+    max-width: 480px;
+    margin: auto;
+}
+.container{
+    /* border: 1px solid #dbdbdb; */
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    padding-bottom: 200px;
+}
+.input_cont h1{
+    padding: 40px 0;
+}
+.input_cont .box{
+    font-size: 18px;
+    color: gray;
+    padding-top: 20px;
+}
+.input_cont input {
+    width: 100%;
+    padding: 18px 10px;
+    border-radius: 5px;
+    border: 1px solid #dbdbdb;
+}
+.input_cont button{
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    font-size: 18px;
+    margin-top: 40px;
+    border: none;
+    background-color: #4361EE;
+    border-radius: 5px;
+    cursor: pointer;
+}

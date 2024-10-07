@@ -1,0 +1,23 @@
+.sidebar{
+    position: fixed;
+    top: 70px;
+    left: 0;
+}
+.icon_sidebar{
+    max-width: 190px;
+    border-radius: 10px;
+    padding: 24px;
+}
+.icon_box_sidebar{
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 7px;
+    border-radius: 8px;
+}
+@media screen and (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+  }
