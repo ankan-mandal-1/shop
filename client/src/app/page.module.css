@@ -40,6 +40,11 @@
   font-family: var(--font-bricol);
   font-size: 52px;
   line-height: 1;
+  /* background: #0A101F; */
+  background: linear-gradient(to bottom right, #0A101F 0%, #7B8798 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
 }
 .hero_content p{
   color: gray;
@@ -143,7 +148,7 @@
   font-family: var(--font-bricol);
 }
 .final_section p{
-  padding: 30px 0 50px;
+  padding: 30px 10px 50px;
 }
 
 /*-------------footer---------------*/

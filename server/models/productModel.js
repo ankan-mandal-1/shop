@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Catergory"
+        ref: "Category"
     },
     original_price: {
         type: String
@@ -35,7 +35,7 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
-})
+}, {timestamps: true})
 
 const ProductModel = mongoose.model("Product", ProductSchema)
 

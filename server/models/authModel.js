@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "https://res.cloudinary.com/dfflk6oiq/image/upload/v1728116932/shop/wwm87vri7rcae1ugg4hy.svg"
     }
-})
+}, {timestamps: true})
 
 const UserModel = mongoose.model("User", UserSchema);
 

@@ -11,6 +11,25 @@ const getAllProducts = async (req, res) => {
     }
 }
 
+const getProductByOwner = async (req, res) => {
+    try {
+        const getProducts = await ProductModel.find({owner: req.user._id}).sort({ createdAt: -1 })
+        return res.status(200).json(getProducts)
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+    }
+}
+
+const getSingleProduct = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const product = await ProductModel.findById(id);
+        return res.status(200).json(product)
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+    }
+}
+
 const addProduct = async (req, res) => {
 
     if(!req.user.storeSlug){
@@ -21,7 +40,7 @@ const addProduct = async (req, res) => {
     const product_images = req.files;
 
     if(!title || !discounted_price){
-        return res.status(200).json({message: "Title & Description fields are required!"})
+        return res.status(400).json({message: "Title & Discounted Price fields are required!"})
     }
 
     try {
@@ -46,9 +65,17 @@ const addProduct = async (req, res) => {
         console.log(images)
         let upload_images = []
         for (const image of images) {
-    
+
             //Upload to Cloudinary one by one
-            const result = await cloudinary.uploader.upload(image);
+            const result = await cloudinary.uploader.upload(image, {
+                transformation: [
+                  {
+                    quality: 30, // Adjust the quality as needed (0-100)
+                    fetch_format: "auto",
+                    width: 500,
+                  }
+                ]
+              });
             upload_images.push({public_id: result.public_id, secure_url: result.secure_url})
     
           }
@@ -67,7 +94,7 @@ const addProduct = async (req, res) => {
 
         images.forEach(async (image) => (
             //Delete Files from ./upload folder
-            await unlink(image, (err) => {
+            unlink(image, (err) => {
                 if (err) {
                   console.error(err);
                 } else {
@@ -82,4 +109,48 @@ const addProduct = async (req, res) => {
     }
 }
 
-export {getAllProducts, addProduct}
+const editProduct = async (req, res) => {
+    const {id} = req.params;
+    const {title, category, original_price, discounted_price, description} = req.body
+    try {
+        const checkUser = await ProductModel.findById(id);
+        if(checkUser.owner.toString() !== req.user._id.toString()){
+            return res.status(400).json({message: "Unauthorized to Update!"})
+        }
+        const product = await ProductModel.findByIdAndUpdate(id, {
+            title, 
+            category, 
+            original_price, 
+            discounted_price, 
+            description,
+        }, {new: true})
+        return res.status(200).json({message: "Updated Successfully!", product})
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+    }
+}
+
+const deleteProduct = async (req, res) => {
+    const {id} = req.params;
+    let imageList = [];
+    try {
+        const checkUser = await ProductModel.findById(id);
+        if(checkUser.owner.toString() !== req.user._id.toString()){
+            return res.status(400).json({message: "Unauthorized to Delete!"})
+        }
+
+        const remove = await ProductModel.findByIdAndDelete(id);
+        if(!remove) {
+            return res.status(200).json({message: "Product not found"})
+        }
+
+        checkUser.product_images?.forEach(item => imageList.push(item.public_id))
+        const result = await cloudinary.api.delete_resources(imageList);
+        
+        return res.status(200).json({message: "Product Deleted Successfully!"})
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+    }
+}
+
+export {getAllProducts, addProduct, getProductByOwner, getSingleProduct, editProduct, deleteProduct}

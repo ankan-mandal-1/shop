@@ -1,6 +1,6 @@
 import express from "express";
 import authenticate from "../middlewares/authenticate.js";
-import { addProduct, getAllProducts } from "../controllers/productController.js";
+import { addProduct, deleteProduct, editProduct, getAllProducts, getProductByOwner, getSingleProduct } from "../controllers/productController.js";
 import multer from "multer";
 const router = express.Router()
 import path from "path"
@@ -35,7 +35,11 @@ const upload = multer({
     },
 })
 
-router.get("/:storeSlug", getAllProducts)
+router.get("/all", authenticate, getProductByOwner)
+router.get("/single/:id", getSingleProduct)
+router.put("/edit/:id", authenticate, editProduct)
+router.delete("/delete/:id", authenticate, deleteProduct)
 router.post("/add-product", authenticate, upload.array('product_images', 4), fileSizeLimitErrorHandler, addProduct)
+router.get("/:storeSlug", getAllProducts)
 
 export default router;

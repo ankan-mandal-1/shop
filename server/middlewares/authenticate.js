@@ -11,10 +11,7 @@ const authenticate = async (req, res, next) => {
         const verified = jwt.verify(token, process.env.JWT)
 
         const getUser = await UserModel.findById(verified._id).select("-password") 
-        console.log(getUser)
-        
         req.user = getUser;
-        console.log(req.user)
         next()
     } catch (error) {
         console.log(error.message)

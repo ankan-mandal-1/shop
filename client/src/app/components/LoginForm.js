@@ -22,7 +22,7 @@ const LoginForm = () => {
       const res = await apiClient.post("/auth/login", { email, password });
       toast.success(res.data.message);
       localStorage.setItem("token", res.data.token);
-      console.log(res.data.user.storeSlug);
+      localStorage.setItem( "storeSlug", res.data.user.storeSlug);
       if (res.data.user.storeSlug === undefined) {
         router.push("/onboard");
       } else {

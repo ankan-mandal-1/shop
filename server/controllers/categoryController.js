@@ -3,7 +3,7 @@ import CategoryModel from "../models/categoryModel.js"
 const getAllCategory = async (req, res) => {
     console.log(req.user._id)
     try {
-        const allCategory = await CategoryModel.find({owner: req.user._id});
+        const allCategory = await CategoryModel.find({owner: req.user._id}).sort({ createdAt: -1 });;
         if(!allCategory){
             return res.status(200).json({message: "Category Empty"})
         }
