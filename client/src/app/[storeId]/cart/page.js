@@ -2,18 +2,37 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 import product_image from "@/public/assets/product.png"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { CartContext } from "@/hooks/CartHook"
 import CounterBtn from "@/app/components/CounterBtn"
 
 const CartPage = () => {
 
   const {cart, setCart} = useContext(CartContext)
+
+  const [oriTotal, setOriTotal] = useState(0)
   
   const removeProduct = (productId) => {
     const filterProduct = cart.filter((item) => item._id !== productId)
     setCart(filterProduct)
   }
+
+  // Calculate total price
+  const totalPrice = cart.reduce((acc, product) => {
+    const originalPrice = parseFloat(product.original_price); // Convert to number
+    const quantity = product.quantity;
+    return acc + (originalPrice * quantity);
+}, 0);
+
+const totalPriceDiscount = cart.reduce((acc, product) => {
+  const discountedPrice = parseFloat(product.discounted_price); // Convert to number
+  const quantity = product.quantity;
+  return acc + (discountedPrice * quantity);
+}, 0);
+
+  // useEffect(() => {
+  //   totalPrice()
+  // }, [])
 
   return (
     <div className="dashboard_container">
@@ -43,8 +62,8 @@ const CartPage = () => {
           <div className={styles.total}>
             <div className={styles.fee}>Item total</div>
             <div className={styles.fee} style={{fontWeight: "bold"}}>
-              <span style={{color: "gray", textDecoration: "line-through", paddingRight: "10px"}}>₹1,847</span>
-               ₹1,847
+              <span style={{color: "gray", textDecoration: "line-through", paddingRight: "10px"}}>₹{totalPrice.toLocaleString()}</span>
+               ₹{totalPriceDiscount.toLocaleString()}
             </div>
           </div>
           <div className={styles.total}>
@@ -54,7 +73,7 @@ const CartPage = () => {
           <hr/>
           <div className={styles.total}>
             <div className={styles.fee} style={{fontWeight: "bold"}}>Grand Total</div>
-            <div className={styles.fee}  style={{fontWeight: "bold"}}>₹1,847</div>
+            <div className={styles.fee}  style={{fontWeight: "bold"}}>₹{totalPriceDiscount.toLocaleString()}</div>
           </div>
         </div>
         <div className={styles.buyBtn}>

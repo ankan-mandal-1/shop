@@ -4,20 +4,7 @@ import { CartContext } from "@/hooks/CartHook";
 
 const CounterBtn = ({product}) => {
 
-    // const [quantity, setQuantity] = useState(1)
     const {cart, setCart} = useContext(CartContext)
-
-    // const increment = () => {
-    //     setQuantity(prev => prev + 1)
-    // }
-
-    // const decrement = () => {
-    //     if(quantity === 1){
-    //         return;
-    //     } else {
-    //         setQuantity(prev => prev - 1)
-    //     }
-    // }
 
     const updateQuantity = (id, newQuantity) => {
         setCart(prevProducts =>
