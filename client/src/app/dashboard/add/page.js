@@ -7,6 +7,7 @@ import AddNavbar from '@/app/components/AddNavbar';
 import { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import apiClient from '@/utils/apiClient';
+import Loader from "@/public/assets/loader.js"
 
 const page = () => {
 
@@ -16,14 +17,14 @@ const page = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [product, setProduct] = useState({
     title: "",
-    category: "",
+    // category: "",
     original_price: "",
     discounted_price: "",
     description: "",
     // product_images: selectedFiles
   })
   const [loading, setLoading] = useState(false)
-  const [category, setCategory] = useState([])
+  // const [category, setCategory] = useState([])
 
 
   const handleImage = (e) => {
@@ -35,18 +36,18 @@ const page = () => {
 
   console.log(selectedFiles)
 
-  const getCategories = async () => {
-    try {
-      const response = await apiClient.get("/category", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      setCategory(response.data.categories)
-    } catch (error) {
-      toast.error(error.response.data.message)
-    }
-  }
+  // const getCategories = async () => {
+  //   try {
+  //     const response = await apiClient.get("/category", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     })
+  //     setCategory(response.data.categories)
+  //   } catch (error) {
+  //     toast.error(error.response.data.message)
+  //   }
+  // }
 
   const handleChange = (e) => {
     setProduct(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -58,7 +59,7 @@ const page = () => {
 
     const formData = new FormData()
     formData.append("title", product.title)
-    formData.append("category", product.category)
+    // formData.append("category", product.category)
     formData.append("original_price", product.original_price)
     formData.append("discounted_price", product.discounted_price)
     formData.append("description", product.description)
@@ -78,6 +79,14 @@ const page = () => {
       console.log(res)
       toast.success(res.data.message)
       alert(res.data.message)
+      setProduct({
+        title: "",
+        // category: "",
+        original_price: "",
+        discounted_price: "",
+        description: "",
+      })
+      setImages([])
       setLoading(false)
     } catch (error) {
       console.log("ERROR", error)
@@ -86,16 +95,16 @@ const page = () => {
     }
   }
 
-  useEffect(() => {
-    getCategories()
-  }, [])
+  // useEffect(() => {
+  //   getCategories()
+  // }, [])
 
   return (
     <>
     <Toaster />
     <div className="dashboard_container">
 
-      <AddNavbar />
+      {/* <AddNavbar /> */}
 
       <form onSubmit={handleSubmit}>
       <div className={styles.content}>
@@ -104,7 +113,7 @@ const page = () => {
           <label>Product Name</label>
           <input name="title" placeholder="Product Name" className={styles.input} value={product.title} onChange={handleChange}/>
         </div>
-        <div>
+        {/* <div>
           <label>Product Category</label>
           <select name="category" className={styles.input} value={product.category} onChange={handleChange}>
               <option value="" defaultValue disabled hidden>Choose here</option>
@@ -112,15 +121,16 @@ const page = () => {
               <option value={item._id} key={item._id}>{item.name}</option>
             ))}
           </select>
-        </div>
+        </div> */}
         <div>
           <label>Original Price</label>
           <input name="original_price" placeholder="Original Price" className={styles.input} value={product.original_price} onChange={handleChange}/>
         </div>
         <div>
-          <label>Discounted Price</label>
+          <label>Discounted Price </label>
           <input name="discounted_price" placeholder="Discounted Price" className={styles.input} value={product.discounted_price} onChange={handleChange}/>
         </div>
+        {product.discounted_price && <div style={{flexDirection: "row", gap: "10px"}}>₹ {product.discounted_price} <span style={{textDecoration: "line-through"}}>₹ {product.original_price}</span></div>}
         <div>
           <label>Description</label>
           <textarea name="description" placeholder="Description" className={styles.input} value={product.description} onChange={handleChange}/>
@@ -137,7 +147,7 @@ const page = () => {
             </label>
           </div>
         </div>
-        <button disabled={loading}>{loading ? "Loading..." : "Add Product"}</button>
+        <button disabled={loading}>{loading ? <Loader/> : "Add Product"}</button>
       </div>
       </form>
 

@@ -108,12 +108,15 @@ const onboard = async (req, res) => {
   const { storeName, storeSlug } = req.body;
   const storeLogo = req.file;
 
+  const storeNameLower = storeName.toLowerCase()
+  const storeSlugLower = storeSlug.toLowerCase()
+
   if (!storeName || !storeSlug) {
     return res.status(400).json({ message: "All fields are required!" });
   }
 
   try {
-    const checkSlugAvailability = await UserModel.findOne({ storeSlug });
+    const checkSlugAvailability = await UserModel.findOne({ storeSlugLower });
 
     if (checkSlugAvailability) {
       return res.status(400).json({ message: "Store Link not Available!" });
@@ -122,7 +125,7 @@ const onboard = async (req, res) => {
     if (!req.file) {
       const store = await UserModel.updateOne(
         { email: req.user.email },
-        { storeName, storeSlug },
+        { storeName: storeNameLower, storeSlug: storeSlugLower },
         { new: true }
       );
       return res.status(200).json({ message: "Store created successfully!" });
@@ -157,4 +160,23 @@ const checkStoreCreated = async (req, res) => {
   }
 }
 
-export { login, register, onboard, checkStoreCreated };
+const getStore = async (req, res) => {
+  const {storeSlug} = req.params;
+  const storeSlugLower = storeSlug.toLowerCase()
+  console.log(storeSlug)
+  try {
+    const data = await UserModel.findOne({storeSlug: storeSlugLower}).select("-password")
+    if(!data){
+      return res.status(400).json({ message: "No store found" });
+    }
+    return res.status(200).json({
+      storeName: data.storeName,
+      storeLogo: data.storeLogo,
+      storeSlug: data.storeSlug
+    })
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+}
+
+export { login, register, onboard, checkStoreCreated, getStore };

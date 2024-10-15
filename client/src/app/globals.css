@@ -21,7 +21,7 @@ img {
 .dashboard_container{
   margin: auto;
   max-width: 480px;
-  /* border: 1px solid rgb(244, 244, 244); */
+  border: 1px solid rgb(244, 244, 244);
   padding: 10px;
   margin-bottom: 80px;
 }

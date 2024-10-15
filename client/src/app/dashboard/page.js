@@ -47,7 +47,7 @@ const DashboardPage = () => {
 
         <div className={styles.store_link}>
           <div className={styles.store_text}><Image src={link} />Store Link</div>
-          <div className={styles.store_url}>https://www.fleket.com/tmall_store</div>
+          <div className={styles.store_url}>https://www.fleket.com/{store}</div>
           <button>Copy Link</button>
         </div>
     </div>

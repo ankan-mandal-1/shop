@@ -5,6 +5,8 @@
     align-items: center;
     padding: 6px 10px;
     background-color: #fff;
+    position: sticky;
+    top: 0;
 }
 .logo_content{
     display: flex;

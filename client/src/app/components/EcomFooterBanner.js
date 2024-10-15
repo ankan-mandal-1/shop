@@ -8,17 +8,17 @@ const EcomFooterBanner = () => {
   return (
     <div className={"footer_banner"}>
         <div className={"banner_box"}>
-            <div className={"banner_icon"}><Image src={delivery} className={"banner_img"}/></div>
+            <div className={"banner_icon"}><Image src={delivery} className={"banner_img"} alt="free delivery"/></div>
             <p>Free <br/>Delivery</p>
         </div>
 
         <div className={"banner_box"}>
-            <div className={"banner_icon"}><Image src={cashondelivery} className={"banner_img"}/></div>
+            <div className={"banner_icon"}><Image src={cashondelivery} className={"banner_img"} alt="payment options"/></div>
             <p>Payment <br/>Options</p>
         </div>
 
         <div className={"banner_box"}>
-            <div className={"banner_icon"}><Image src={help} className={"banner_img"}/></div>
+            <div className={"banner_icon"}><Image src={help} className={"banner_img"} alt="customer support"/></div>
             <p>Customer <br/>Support</p>
         </div>
 

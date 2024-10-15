@@ -10,3 +10,10 @@
     background-color: #4361EE;
     color: #fff;
   }
+
+  @media screen and (max-width: 600px) {
+    .btn {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+  }

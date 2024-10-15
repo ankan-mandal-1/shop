@@ -6,6 +6,7 @@ const getAllProducts = async (req, res) => {
     const {storeSlug} = req.params;
     try {
         const getProducts = await ProductModel.find({storeSlug})
+        return res.status(200).json(getProducts)
     } catch (error) {
         return res.status(400).json({message: error.message})
     }
@@ -24,6 +25,9 @@ const getSingleProduct = async (req, res) => {
     const {id} = req.params;
     try {
         const product = await ProductModel.findById(id);
+        if(!product){
+            return res.status(400).json({message: "Product Not Found!"})
+        }
         return res.status(200).json(product)
     } catch (error) {
         return res.status(400).json({message: error.message})
@@ -36,18 +40,22 @@ const addProduct = async (req, res) => {
         return res.status(400).json({message: "Please create a store!"})
     }
 
-    const {title, category, original_price, discounted_price, description} = req.body;
+    const {title, original_price, discounted_price, description} = req.body;
     const product_images = req.files;
 
     if(!title || !discounted_price){
         return res.status(400).json({message: "Title & Discounted Price fields are required!"})
     }
 
+    // if(!category){
+    //     return res.status(400).json({message: "Please create a category!"})
+    // }
+
     try {
         if(!product_images){
             const addProduct = new ProductModel({
                 title, 
-                category, 
+                // category, 
                 original_price, 
                 discounted_price, 
                 description,
@@ -82,7 +90,7 @@ const addProduct = async (req, res) => {
           console.log(upload_images)
           const addProduct = new ProductModel({
             title, 
-            category, 
+            // category, 
             original_price, 
             discounted_price, 
             description,

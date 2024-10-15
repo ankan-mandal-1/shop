@@ -9,6 +9,8 @@
 }
 .banner_box{
     text-align: center;
+    font-weight: 500;
+    color: #4b4b4b;
 }
 .banner_img{
     width: 50px;

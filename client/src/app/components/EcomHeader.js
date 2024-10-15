@@ -1,18 +1,23 @@
 import Image from "next/image"
 import "./EcomHeader.css"
 import logo from "@/public/assets/logo.webp"
-import cart from "@/public/assets/cart.png"
+import Link from "next/link"
+import EcomCartIcon from "./EcomCartIcon"
 
-const EcomHeader = () => {
+const EcomHeader = async ({storeId}) => {
+
+  const product = await fetch(`http://localhost:8000/api/auth/${storeId}`);
+  const response = await product.json();
+
   return (
     <header className={"header"}>
         <div className={"logo_content"}>
-        <Image src={logo} className={"logo"} />
-        Tmall
+        <Link href={`/${storeId}`}><Image src={response?.storeLogo} className={"logo"} alt="logo" width={60} height={60} /></Link>
+        <span style={{textTransform: "capitalize"}}>{response?.storeName}</span>
         </div>
-        <div>
-            <Image src={cart} className={"cart_icon"} />
-        </div>
+        <Link href={`/${storeId}/cart`}>
+          <EcomCartIcon />
+        </Link>
       </header>
   )
 }
