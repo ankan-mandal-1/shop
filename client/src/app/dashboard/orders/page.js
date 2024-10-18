@@ -1,24 +1,69 @@
+"use client"
 import Image from "next/image"
 import styles from "./page.module.css"
 import bg from "@/public/assets/bg.jpg"
+import { useEffect, useState } from "react"
+import apiClient from "@/utils/apiClient"
+import Link from "next/link"
 
 const page = () => {
+
+  const token = localStorage.getItem("token")
+
+  const [orders, setOrders] = useState([])
+
+  const getAllOrders = async () => {
+    try {
+      const res = await apiClient.get("/order/all", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      setOrders(res.data)
+      console.log(res.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getAllOrders()
+  }, [])
+
   return (
     <div className="dashboard_container">
       <div className={styles.order_container}>
         <h1>Orders</h1><br/>
+
+        {/* {orders.map((order, index) => (
+          <div className={styles.order_box}>
+          <div>
+            <Image src={bg} className={styles.product_image}/>
+          </div>
+          <div>
+          <p><b>{order.fname}</b></p>
+            <p>{new Date(order.createdAt).toDateString()}, {order.createdAt.match(/\d\d:\d\d/)}</p>
+          </div>
+        </div>
+        ))} */}
+
+        {orders.map((order, index) => (
+          <Link href={`/dashboard/orders/${order._id}`}>
+            <div className={styles.order_box}>
+          <div>
+            <img src={order.products[0].productId.product_images[0].secure_url} className={styles.product_image}/>
+          </div>
+          <div>
+          <p style={{color: "#000"}}><b>{order.fname}</b></p>
+            <p>{new Date(order.createdAt).toDateString()}, {order.createdAt.match(/\d\d:\d\d/)}</p>
+          </div>
+        </div>
+          </Link>
+        ))}
         
-        <div className={styles.order_box}>
-          <div>
-            <Image src={bg} className={styles.product_image}/>
-          </div>
-          <div>
-          <p><b>Ankan Mandal</b></p>
-            <p>12 July 2015, 11:15pm</p>
-          </div>
-        </div>
+        
 
-        <div className={styles.order_box}>
+        {/* <div className={styles.order_box}>
           <div>
             <Image src={bg} className={styles.product_image}/>
           </div>
@@ -26,17 +71,9 @@ const page = () => {
             <p>Ankan Mandal</p>
             <p>12 July 2015, 11:15pm</p>
           </div>
-        </div>
+        </div> */}
 
-        <div className={styles.order_box}>
-          <div>
-            <Image src={bg} className={styles.product_image}/>
-          </div>
-          <div>
-            <p>Ankan Mandal</p>
-            <p>12 July 2015, 11:15pm</p>
-          </div>
-        </div>
+        
 
         <div className={styles.order_box}>
           <div>

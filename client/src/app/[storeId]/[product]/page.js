@@ -11,7 +11,7 @@ import BuyNow from "@/app/components/BuyNow";
 export async function generateMetadata({ params }){
   // read route params
   const productId = params.product;
-
+  
   const product = await fetch(`http://localhost:8000/api/product/single/${productId}`, { next: { revalidate: 300 } });
   const singleProd = await product.json();
 
@@ -24,6 +24,7 @@ export async function generateMetadata({ params }){
 const SingleProduct = async ({params}) => {
 
   const productId = params.product;
+  const storeId = params.storeId;
 
   // const {product} = useParams()
   // const [singleProd, setSingleProd] = useState()
@@ -69,7 +70,7 @@ const SingleProduct = async ({params}) => {
             <div className={styles.taxes}>*Inclusive of all taxes</div>
             <div className={styles.btn}>
               <AddToCart product={singleProd} />
-              <BuyNow product={singleProd} />
+              <BuyNow storeId={storeId} product={singleProd} />
             </div>
             <div className={styles.description}>
               <h2>Description</h2><br/>

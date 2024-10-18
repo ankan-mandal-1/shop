@@ -5,34 +5,20 @@ import product_image from "@/public/assets/product.png"
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from "@/hooks/CartHook"
 import CounterBtn from "@/app/components/CounterBtn"
+import { useParams, useRouter } from "next/navigation"
+import PriceContainer from "@/app/components/PriceContainer"
 
 const CartPage = () => {
 
-  const {cart, setCart} = useContext(CartContext)
+  const {cart, setCart, totalPrice, totalPriceDiscount} = useContext(CartContext)
 
-  const [oriTotal, setOriTotal] = useState(0)
+  const router = useRouter();
+  const {storeId} = useParams()
   
   const removeProduct = (productId) => {
     const filterProduct = cart.filter((item) => item._id !== productId)
     setCart(filterProduct)
   }
-
-  // Calculate total price
-  const totalPrice = cart.reduce((acc, product) => {
-    const originalPrice = parseFloat(product.original_price); // Convert to number
-    const quantity = product.quantity;
-    return acc + (originalPrice * quantity);
-}, 0);
-
-const totalPriceDiscount = cart.reduce((acc, product) => {
-  const discountedPrice = parseFloat(product.discounted_price); // Convert to number
-  const quantity = product.quantity;
-  return acc + (discountedPrice * quantity);
-}, 0);
-
-  // useEffect(() => {
-  //   totalPrice()
-  // }, [])
 
   return (
     <div className="dashboard_container">
@@ -58,27 +44,13 @@ const totalPriceDiscount = cart.reduce((acc, product) => {
         </div>
         ))}
 
-        <div className={styles.outer_box}>
-          <div className={styles.total}>
-            <div className={styles.fee}>Item total</div>
-            <div className={styles.fee} style={{fontWeight: "bold"}}>
-              <span style={{color: "gray", textDecoration: "line-through", paddingRight: "10px"}}>₹{totalPrice.toLocaleString()}</span>
-               ₹{totalPriceDiscount.toLocaleString()}
-            </div>
-          </div>
-          <div className={styles.total}>
-            <div className={styles.fee}>Delivery fee</div>
-            <div className={styles.fee}  style={{color: "green"}}>FREE</div>
-          </div>
-          <hr/>
-          <div className={styles.total}>
-            <div className={styles.fee} style={{fontWeight: "bold"}}>Grand Total</div>
-            <div className={styles.fee}  style={{fontWeight: "bold"}}>₹{totalPriceDiscount.toLocaleString()}</div>
-          </div>
-        </div>
+        {cart.length === 0 ? null : <>
+          <PriceContainer />
         <div className={styles.buyBtn}>
-        <button>BUY NOW</button>
+        <button onClick={() => router.push(`/${storeId}/address`)}>BUY NOW</button>
         </div>
+        </>}
+
       </div>
     </div>
   )

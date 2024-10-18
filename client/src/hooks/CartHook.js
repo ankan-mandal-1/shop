@@ -9,8 +9,21 @@ const CartContextProvider = (props) => {
 
     console.log(cart)
 
+    // Calculate total price
+  const totalPrice = cart.reduce((acc, product) => {
+    const originalPrice = parseFloat(product.original_price); // Convert to number
+    const quantity = product.quantity;
+    return acc + (originalPrice * quantity);
+}, 0);
+
+const totalPriceDiscount = cart.reduce((acc, product) => {
+  const discountedPrice = parseFloat(product.discounted_price); // Convert to number
+  const quantity = product.quantity;
+  return acc + (discountedPrice * quantity);
+}, 0);
+
   return (
-    <CartContext.Provider value={{cart, setCart}}>
+    <CartContext.Provider value={{cart, setCart, totalPrice, totalPriceDiscount}}>
         {props.children}
     </CartContext.Provider>
   )

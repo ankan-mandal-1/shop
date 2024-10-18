@@ -1,0 +1,16 @@
+.total{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+.fee{
+    font-size: 18px;
+}
+.outer_box hr{
+    border: 1px dashed #e1e1e1;
+}
+.outer_box{
+    border: 1px solid #e1e1e1;
+    margin: 15px 0;
+    border-radius: 8px;
+}

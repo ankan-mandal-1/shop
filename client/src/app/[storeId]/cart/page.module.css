@@ -5,11 +5,6 @@
 .cart_container{
     /* border:1px solid gray; */
 }
-.outer_box{
-    border: 1px solid #e1e1e1;
-    margin: 15px 0;
-    border-radius: 8px;
-}
 .no_items{
     color: gray;
     margin-bottom: 15px;
@@ -56,17 +51,7 @@
     color: gray;
     font-size: 14px;
 }
-.total{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 15px;
-}
-.fee{
-    font-size: 18px;
-}
-.outer_box hr{
-    border: 1px dashed #e1e1e1;
-}
+
 .buyBtn {
     position: sticky;
     bottom: 0;

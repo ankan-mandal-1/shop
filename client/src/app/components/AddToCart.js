@@ -13,6 +13,7 @@ const AddToCart = ({product}) => {
               toast.success("Product added to Cart!")
             } else {
               setCart(prev => ([{...product, quantity: 1}, ...prev]))
+              // setCart(prev => ([{productId: product._id, quantity: 1}, ...prev]))
             }
       }
 

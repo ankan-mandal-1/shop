@@ -6,6 +6,7 @@ const app = express();
 import authRoute from "./routes/authRoute.js"
 import productRoute from "./routes/productRoute.js"
 import categoryRoute from "./routes/categoryRoute.js"
+import orderRoute from "./routes/orderRoute.js"
 
 import connectDB from './config/db.js';
 import { v2 as cloudinary } from 'cloudinary' 
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoute)
 app.use("/api/category", categoryRoute)
 app.use("/api/product", productRoute)
+app.use("/api/order", orderRoute)
 
 app.listen(process.env.PORT || 5000, () => {
     console.log(`Server running on PORT ${process.env.PORT}`)

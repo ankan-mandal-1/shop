@@ -9,6 +9,7 @@ import EcomProductList from "../components/EcomProductList";
 import { Suspense } from 'react'
 // import { useParams } from "next/navigation";
 import apiClient from "@/utils/apiClient";
+import LoaderGray from "@/public/assets/loader-gray";
  
 // export const metadata = {
 //     title: "Ecommerce - Made with Fleket.com",

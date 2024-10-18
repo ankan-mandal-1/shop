@@ -109,7 +109,7 @@ const onboard = async (req, res) => {
   const storeLogo = req.file;
 
   const storeNameLower = storeName.toLowerCase()
-  const storeSlugLower = storeSlug.toLowerCase()
+  const storeSlugLower = storeSlug.trim().toLowerCase().replace(/\s+/g, '_');
 
   if (!storeName || !storeSlug) {
     return res.status(400).json({ message: "All fields are required!" });
