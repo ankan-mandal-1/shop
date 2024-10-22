@@ -1,0 +1,88 @@
+.order_container{
+
+}
+.datetime{
+    margin: 15px 0px;
+}
+.order_container .deleteBtn {
+    color: #fff;
+    background: red;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.2);
+}
+.order_container hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #e1e1e1;
+}
+.item_length{
+    padding: 10px 0;
+    color: gray;
+}
+
+
+.box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+.image_box{
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    height: 80px;
+}
+.image{
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+.details{
+
+}
+.product_name{
+    font-weight: 500;
+}
+.quantity_numb{
+    border: 1px solid #9b00cd;
+    background: #f9dbff;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+.quantity{
+
+}
+.item_total{
+    font-weight: 600;
+}
+
+.total_box{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin: 10px 0;
+    border-top: 1px solid #e1e1e1;
+    padding: 15px 0;
+}
+
+.customer_box{
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    padding: 10px;
+}
+.customer_box .heading {
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e1e1e1;
+}
+.label{
+    font-weight: 600;
+    margin: 15px 0 0px 0;
+}
+.light_label{
+
+}

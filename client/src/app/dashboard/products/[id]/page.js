@@ -10,7 +10,8 @@ const EditProduct = () => {
 
   const {id} = useParams()
   const router = useRouter()
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
   
   const [images, setImages] = useState([])
   const [product, setProduct] = useState({
@@ -96,6 +97,8 @@ const EditProduct = () => {
   }
 
   useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
     getCategories()
     getProduct()
   }, [])

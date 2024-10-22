@@ -2,7 +2,7 @@
 import styles from "@/app/onboard/page.module.css"
 import store_logo from "@/public/assets/store_logo.svg"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {ArrowShapeUpFromLine} from '@gravity-ui/icons';
 import apiClient from "@/utils/apiClient"
 import toast from "react-hot-toast"
@@ -19,7 +19,8 @@ const Settings = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
 
   const handleImage = (e) => {
     setImage(e.target.files[0])
@@ -58,6 +59,11 @@ const Settings = () => {
     localStorage.removeItem("storeName");
     router.push("/")
   }
+
+  useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
+  }, [])
 
   return (
     <div className="dashboard_container">

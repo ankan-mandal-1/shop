@@ -3,7 +3,7 @@ import styles from "./page.module.css"
 import DashBoardHeader from '../components/DashBoardHeader'
 import store_logo from "@/public/assets/store_logo.svg"
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {ArrowShapeUpFromLine} from '@gravity-ui/icons';
 import apiClient from "@/utils/apiClient"
 import toast from "react-hot-toast"
@@ -20,7 +20,8 @@ const OnBoard = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
 
   const handleImage = (e) => {
     setImage(e.target.files[0])
@@ -52,6 +53,11 @@ const OnBoard = () => {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
+  }, [])
 
   return (
     <>

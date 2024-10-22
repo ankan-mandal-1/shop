@@ -10,7 +10,8 @@ import { useRouter } from "next/navigation";
 const SingleOrderPage = ({params}) => {
 
     const {orderId} = params;
-    const token = localStorage.getItem("token")
+    // const token = localStorage.getItem("token")
+    const [token, setToken] = useState("")
     const router = useRouter()
     const [order, setOrder] = useState([])
 
@@ -49,6 +50,8 @@ const SingleOrderPage = ({params}) => {
       }
 
     useEffect(() => {
+        const useToken = localStorage.getItem("token")
+        setToken(useToken)
         fetchOrderDetail()
     }, [])
 

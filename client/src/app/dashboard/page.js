@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "./page.module.css"
 import Image from 'next/image'
 import sales from "@/public/assets/sales.png"
@@ -10,8 +10,10 @@ import { useRouter } from 'next/navigation'
 const DashboardPage = () => {
 
   const router = useRouter()
-  const token = localStorage.getItem("token")
-  const store = localStorage.getItem("storeSlug")
+  // const token = localStorage.getItem("token")
+  // const store = localStorage.getItem("storeSlug")
+  const [token, setToken] = useState("")
+  const [store, setStore] = useState("")
 
   if(!token){
     router.push("/login")
@@ -22,6 +24,14 @@ const DashboardPage = () => {
   }
 
   const sale = 12345
+
+  useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
+
+    const useStore = localStorage.getItem("storeSlug")
+    setStore(useStore)
+  })
 
   return (
     <div className="dashboard_container">

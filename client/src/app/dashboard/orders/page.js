@@ -8,7 +8,8 @@ import Link from "next/link"
 
 const OrderPage = () => {
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
 
   const [orders, setOrders] = useState([])
 
@@ -27,6 +28,8 @@ const OrderPage = () => {
   }
 
   useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
     getAllOrders()
   }, [])
 

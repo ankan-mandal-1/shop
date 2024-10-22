@@ -1,0 +1,35 @@
+.product_container{
+
+}
+.product{
+    display: flex;
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0px;
+    cursor: pointer;
+}
+.product_container h1{
+    font-size: 24px;
+    margin-top: 10px;
+}
+.product_img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 5px;
+    border: 1px solid #e1e1e1;
+}
+.title{
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.price{
+    color: #000000;
+}
+.strike{
+    color: gray;
+    text-decoration: line-through;
+}

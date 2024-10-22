@@ -12,10 +12,12 @@ import Link from 'next/link';
 
 const CategoryPage = () => {
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
 
   const [categoryName, setCategoryName] = useState("")
   const [category, setCategory] = useState([])
+
+  const [token, setToken] = useState("")
 
   const addCategory = async (e) => {
     e.preventDefault()
@@ -49,6 +51,8 @@ const CategoryPage = () => {
   console.log(category)
 
   useEffect(() => {
+    const userToken = localStorage.get("token")
+    setToken(userToken)
     getCategories()
   }, [])
 

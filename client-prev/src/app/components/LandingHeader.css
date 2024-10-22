@@ -1,0 +1,19 @@
+.btn{
+    font-size: 16px;
+    padding: 15px 20px;
+    border-radius: 5px;
+  }
+  .transBtn{
+    color: #4361EE;
+  }
+  .bgBtn{
+    background-color: #4361EE;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 600px) {
+    .btn {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+  }

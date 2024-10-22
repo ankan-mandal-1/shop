@@ -11,7 +11,8 @@ import Loader from "@/public/assets/loader.js"
 
 const AddPage = () => {
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
   
   const [images, setImages] = useState([])
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -95,9 +96,11 @@ const AddPage = () => {
     }
   }
 
-  // useEffect(() => {
-  //   getCategories()
-  // }, [])
+  useEffect(() => {
+    const useToken = localStorage.getItem("token");
+    setToken(useToken)
+    // getCategories()
+  }, [])
 
   return (
     <>

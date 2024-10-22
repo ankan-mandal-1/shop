@@ -1,0 +1,60 @@
+x.product_info{
+    padding: 10px 0;
+}
+.product_seller{
+    font-size: 12px;
+    color: gray;
+    margin-top: 30px;
+}
+.product_title{
+    padding: 0px 0 12px 0;
+}
+.product_price{
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+}
+.taxes{
+    color: gray;
+    font-size: 12px;
+    padding: 0px 0 12px;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+.product_info button {
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    background: #000;
+    margin: 7px 0;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: inherit;
+}
+.description{
+    margin: 20px 0;
+}
+
+
+
+@media screen and (min-width: 870px) {
+    .product_container{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 870px;
+        gap: 50px;
+        margin-top: 30px;
+    }
+    .product_seller{
+        margin-top: 0px;
+    }
+}

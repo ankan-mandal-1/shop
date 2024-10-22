@@ -1,10 +1,17 @@
 "use client"
+import { useEffect, useState } from "react"
 import "./LandingHeader.css"
 import Link from 'next/link'
 
 const LandingHeader = () => {
 
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
+    const [token, setToken] = useState("")
+
+    useEffect(() => {
+      const useToken = localStorage.getItem("token");
+      setToken(useToken)
+    }, [])
 
   return (
     <div>

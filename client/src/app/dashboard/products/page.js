@@ -9,7 +9,8 @@ import Link from "next/link"
 
 const ProductPage = () => {
 
-  const token = localStorage.getItem("token")
+  // const token = localStorage.getItem("token")
+  const [token, setToken] = useState("")
 
   const [products, setProducts] = useState([])
 
@@ -27,6 +28,8 @@ const ProductPage = () => {
   }
 
   useEffect(() => {
+    const useToken = localStorage.getItem("token")
+    setToken(useToken)
     getProducts()
   }, [])
 
