@@ -6,6 +6,7 @@ import heroBanner from "@/public/assets/hero-banner.jpg"
 import discount from "@/public/assets/discount-tag.svg"
 import shopping from "@/public/assets/online-shopping.svg"
 import trust from "@/public/assets/trust.png"
+import reviews from "@/public/assets/reviews.png"
 import Link from "next/link";
 import Footer from "./components/Footer.js";
 import LandingHeader from "./components/LandingHeader";
@@ -24,7 +25,8 @@ export default function Home() {
       {/* Hero Section! */}
       <div className={styles.hero_section}>
         <div className={styles.hero_content}>
-          <Image src={trust} className={styles.trust} />
+          {/* <Image src={trust} className={styles.trust} /> */}
+          <Image src={reviews} className={styles.trust} />
           <h1>Launch Your <br/>Dream Store for <br/>Rs 0/-</h1>
           <p>Turn your ideas into income! Create a stunning online store for FREE - no tech skills needed, just your vision!</p>
           <Link href="/register">

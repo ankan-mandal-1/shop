@@ -21,6 +21,9 @@
     border-radius: 5px;
     font-family: inherit;
 }
+.content textarea {
+    min-height: 250px;
+}
 .image_content{
     display: flex;
     flex-direction: row !important;

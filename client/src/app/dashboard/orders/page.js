@@ -34,6 +34,7 @@ const page = () => {
     <div className="dashboard_container">
       <div className={styles.order_container}>
         <h1>Orders</h1><br/>
+        {orders.length < 1 && <div>No Orders Found!</div>}
 
         {/* {orders.map((order, index) => (
           <div className={styles.order_box}>
@@ -72,18 +73,6 @@ const page = () => {
             <p>12 July 2015, 11:15pm</p>
           </div>
         </div> */}
-
-        
-
-        <div className={styles.order_box}>
-          <div>
-            <Image src={bg} className={styles.product_image}/>
-          </div>
-          <div>
-            <p><b>Ankan Mandal</b></p>
-            <p>12 July 2015, 11:15pm</p>
-          </div>
-        </div>
 
       </div>
     </div>

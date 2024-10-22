@@ -4,11 +4,14 @@ import styles from "./page.module.css"
 import product from "@/public/assets/product.png"
 import { useEffect, useState } from "react";
 import apiClient from "@/utils/apiClient";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const SingleOrderPage = ({params}) => {
 
     const {orderId} = params;
     const token = localStorage.getItem("token")
+    const router = useRouter()
     const [order, setOrder] = useState([])
 
     const fetchOrderDetail = async () => {
@@ -31,6 +34,20 @@ const SingleOrderPage = ({params}) => {
     
       const totalPrice = calculateTotal();
 
+      const deleteOrder = async () => {
+        if (confirm("Your Order will be deleted permanently!") == true) {
+          const res = await apiClient.delete(`/order/delete/${orderId}`, {
+            headers: {
+              "Authorization": `Bearer ${token}`
+            }
+          })
+          toast.success(res.data.message)
+          router.push("/dashboard/orders")
+        } else {
+          console.log("none")
+        }
+      }
+
     useEffect(() => {
         fetchOrderDetail()
     }, [])
@@ -40,6 +57,7 @@ const SingleOrderPage = ({params}) => {
         <div className={styles.order_container}>
             <div><b>Order ID</b> #{orderId}</div>
             <div className={styles.datetime}>{new Date(order.createdAt).toDateString()}, {order?.createdAt?.match(/\d\d:\d\d/)}</div>
+            <div><button onClick={deleteOrder} className={styles.deleteBtn}>Delete Order</button></div><br/>
             <hr />
             <div className={styles.item_length}>{order?.products?.length} Items</div>
 

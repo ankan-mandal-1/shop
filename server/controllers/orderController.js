@@ -72,4 +72,27 @@ const getSingleOrder = async (req, res) => {
     }
 }
 
-export {placeOrder, getAllOrders, getSingleOrder}
+const deleteOrder = async (req, res) => {
+    const {id} = req.params;
+    try {
+        const checkStore = await orderModel.findById(id);
+        if(checkStore.storeSlug !== req.user.storeSlug){
+            return res.status(400).json({message: "Unauthorized!"})
+        }
+        const delete_order = await orderModel.findByIdAndDelete(id)
+        if(delete_order){
+            return res.status(200).json({message: "Order deleted successful!"})
+        } else {
+            return res.status(400).json({message: "Something went wrong"})
+        }
+    } catch (error) {
+        return res.status(400).json({message: error.message})
+    }
+}
+
+export {placeOrder, getAllOrders, getSingleOrder, deleteOrder}
+
+// const start = new Date().toDateString();
+// const todayOrders = await Order.find({
+//             createdAt: {$gte : start } // it will get you records for today's date only
+//         }).populate({ path: 'userId' }).populate({ path: 'orderPorducts.productId

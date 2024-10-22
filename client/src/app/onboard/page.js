@@ -46,7 +46,7 @@ const OnBoard = () => {
       router.push("/dashboard")
       setLoading(false)
     } catch (error) {
-      alert(error.response.data.message)
+      // alert(error.response.data.message)
       setError(true)
       toast.error(error.response.data.message)
       setLoading(false)

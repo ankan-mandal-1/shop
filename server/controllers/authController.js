@@ -116,7 +116,7 @@ const onboard = async (req, res) => {
   }
 
   try {
-    const checkSlugAvailability = await UserModel.findOne({ storeSlugLower });
+    const checkSlugAvailability = await UserModel.findOne({ storeSlug: storeSlugLower });
 
     if (checkSlugAvailability) {
       return res.status(400).json({ message: "Store Link not Available!" });

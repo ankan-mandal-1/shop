@@ -107,13 +107,13 @@ const EditProduct = () => {
                 <form onSubmit={handleSubmit}>
                 <div className={styles.content}>
                     <h1>Edit Product <span>
-                      <TrashBin onClick={deleteProduct} style={{ width: '24px', height: '24px' }}/>
+                      <TrashBin onClick={deleteProduct} style={{ width: '24px', height: '24px', color: "red" }}/>
                       </span></h1>
                     <div>
                     <label>Product Name</label>
                     <input name="title" placeholder="Product Name" className={styles.input} value={product.title} onChange={handleChange}/>
                     </div>
-                    <div>
+                    {/* <div>
                     <label>Product Category</label>
                     <select name="category" className={styles.input} value={product.category} onChange={handleChange}>
                         <option value="" defaultValue disabled hidden>Choose here</option>
@@ -121,7 +121,7 @@ const EditProduct = () => {
                         <option value={item._id} key={item._id}>{item.name}</option>
                         ))}
                     </select>
-                    </div>
+                    </div> */}
                     <div>
                     <label>Original Price</label>
                     <input name="original_price" placeholder="Original Price" className={styles.input} value={product.original_price} onChange={handleChange}/>
