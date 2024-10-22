@@ -62,9 +62,9 @@ const LoginForm = () => {
           />
         </div>
         <div style={{ color: "gray", marginTop: "10px" }}>
-          Don't have an account?{" "}
+          Do not have an account? 
           <Link href="/register" style={{ textDecoration: "underline" }}>
-            Register
+             Register
           </Link>
         </div>
 

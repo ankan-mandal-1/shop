@@ -74,11 +74,11 @@ export default function Home() {
         <h3>Success Stories</h3> 
         <div className={styles.testi_content}>
           <div className={styles.box}>
-          "I launched my online store in just a few hours! The process was so simple, and I couldn't believe it was free. I've already made my first sale!"
+          I launched my online store in just a few hours! The process was so simple, and I could not believe it was free. I have already made my first sale!
           <br/><br/>-- Sarah T., Handmade Jewelry Seller
           </div>
           <div className={styles.box}>
-          "I love how easy it is to manage my products and orders. [Your Website Name] made e-commerce accessible for me!"
+          I love how easy it is to manage my products and orders. Fleket made e-commerce accessible for me!
           <br/><br/>-- Mike L., Vintage Clothing Shop Owner
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
       {/* Testimonial Section! */}
       <div className={styles.final_section}>
         <h3>Get Started Today!</h3>
-        <p>Don’t wait any longer to bring your business idea to life.<br/> Sign up for free and start building your online store now!</p>
+        <p>Do not wait any longer to bring your business idea to life.<br/> Sign up for free and start building your online store now!</p>
         <Link href="/register">
             <span className={`${styles.btn} ${styles.bgBtn}`}>⚡ Get Started</span>
           </Link>

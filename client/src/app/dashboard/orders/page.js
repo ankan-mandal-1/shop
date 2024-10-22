@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import apiClient from "@/utils/apiClient"
 import Link from "next/link"
 
-const page = () => {
+const OrderPage = () => {
 
   const token = localStorage.getItem("token")
 
@@ -49,7 +49,7 @@ const page = () => {
         ))} */}
 
         {orders.map((order, index) => (
-          <Link href={`/dashboard/orders/${order._id}`}>
+          <Link href={`/dashboard/orders/${order._id}`} key={index}>
             <div className={styles.order_box}>
           <div>
             <img src={order.products[0].productId.product_images[0].secure_url} className={styles.product_image}/>
@@ -79,4 +79,4 @@ const page = () => {
   )
 }
 
-export default page
+export default OrderPage

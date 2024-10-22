@@ -10,7 +10,7 @@ import apiClient from '@/utils/apiClient';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-const page = () => {
+const CategoryPage = () => {
 
   const token = localStorage.getItem("token")
 
@@ -70,7 +70,7 @@ const page = () => {
       </div>
       </form>
       {category.map((cat, index) => (
-        <div className={styles.category_box}>
+        <div className={styles.category_box} key={index}>
         <div className={styles.category_title}>{cat.name}</div>
         <Link href={`./${cat._id}`}>
           <div className={styles.category_edit}>
@@ -84,4 +84,4 @@ const page = () => {
   )
 }
 
-export default page
+export default CategoryPage

@@ -138,7 +138,7 @@ const EditProduct = () => {
                     <label>Product Image (4 images only)</label>
                     <div className={styles.image_content}>
                         {images.map((image, index) => (
-                        <img src={image.secure_url} key={index} className={styles.image} />
+                        <img src={image.secure_url} key={index} className={styles.image} alt="image" />
                         ))}
                     </div>
                     </div>

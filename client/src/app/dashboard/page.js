@@ -28,7 +28,7 @@ const DashboardPage = () => {
       <div className={styles.dashboard}>
         <div className={styles.box}>
             <div className={styles.icon_title_image}>
-              <Image src={sales} alt={"sales"} />
+              <Image src={sales} alt="sales" />
               <span>Sales</span>
             </div> 
             <p className={styles.revenue}>$ {sale.toLocaleString()}</p>
@@ -37,7 +37,7 @@ const DashboardPage = () => {
 
         <div className={styles.box}>
             <div className={styles.icon_title_image}>
-              <Image src={orders} alt={"order"} />
+              <Image src={orders} alt="order" />
               <span>Orders</span>
             </div>
             <p className={styles.revenue}> {sale.toLocaleString()}</p>

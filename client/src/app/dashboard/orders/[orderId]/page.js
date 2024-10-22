@@ -62,7 +62,7 @@ const SingleOrderPage = ({params}) => {
             <div className={styles.item_length}>{order?.products?.length} Items</div>
 
             {order.products?.map((item, index) => (
-                <div className={styles.box}>
+                <div className={styles.box} key={index}>
                 <div className={styles.image_box}>
                     <img src={item.productId.product_images[0].secure_url} alt="" className={styles.image} />
                 </div>

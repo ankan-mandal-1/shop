@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import apiClient from '@/utils/apiClient';
 import Loader from "@/public/assets/loader.js"
 
-const page = () => {
+const AddPage = () => {
 
   const token = localStorage.getItem("token")
   
@@ -156,4 +156,4 @@ const page = () => {
   )
 }
 
-export default page
+export default AddPage
