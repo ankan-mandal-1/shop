@@ -13,7 +13,7 @@ const OrderPage = () => {
 
   const [orders, setOrders] = useState([])
 
-  const getAllOrders = async () => {
+  const getAllOrders = async (token) => {
     try {
       const res = await apiClient.get("/order/all", {
         headers: {
@@ -30,7 +30,7 @@ const OrderPage = () => {
   useEffect(() => {
     const useToken = localStorage.getItem("token")
     setToken(useToken)
-    getAllOrders()
+    getAllOrders(useToken)
   }, [])
 
   return (

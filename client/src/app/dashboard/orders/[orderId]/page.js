@@ -15,7 +15,7 @@ const SingleOrderPage = ({params}) => {
     const router = useRouter()
     const [order, setOrder] = useState([])
 
-    const fetchOrderDetail = async () => {
+    const fetchOrderDetail = async (token) => {
         const res = await apiClient.get(`/order/${orderId}`, {
             headers: {
               "Authorization": `Bearer ${token}`
@@ -52,7 +52,7 @@ const SingleOrderPage = ({params}) => {
     useEffect(() => {
         const useToken = localStorage.getItem("token")
         setToken(useToken)
-        fetchOrderDetail()
+        fetchOrderDetail(useToken)
     }, [])
 
   return (

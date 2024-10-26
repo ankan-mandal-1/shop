@@ -16,8 +16,8 @@ export async function generateMetadata({ params }){
   const singleProd = await product.json();
 
   return {
-    title: `${singleProd.title.slice(0, 60)}`,
-    description: `${singleProd.description.slice(0, 68)}`,
+    title: `${singleProd?.title?.slice(0, 60)}`,
+    description: `${singleProd?.description?.slice(0, 68)}`,
   };
 }
 
@@ -65,8 +65,8 @@ const SingleProduct = async ({params}) => {
             <div className={styles.product_seller}>BEST SELLER</div>
             <div className={styles.product_title}><h1>{singleProd?.title}</h1></div>
             <div className={styles.product_price}>
-                <span style={{textDecoration: "line-through", color: "#434343", fontWeight: 400}}>Rs {singleProd?.original_price.toLocaleString()}</span>
-                 Rs {singleProd?.discounted_price.toLocaleString()}</div>
+                <span style={{textDecoration: "line-through", color: "#434343", fontWeight: 400}}>{singleProd.original_price && <>Rs {singleProd?.original_price?.toLocaleString()}</>}</span>
+                 Rs {singleProd?.discounted_price?.toLocaleString()}</div>
             <div className={styles.taxes}>*Inclusive of all taxes</div>
             <div className={styles.btn}>
               <AddToCart product={singleProd} />

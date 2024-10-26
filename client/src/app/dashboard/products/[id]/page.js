@@ -16,13 +16,13 @@ const EditProduct = () => {
   const [images, setImages] = useState([])
   const [product, setProduct] = useState({
     title: "",
-    category: "",
+    // category: "",
     original_price: "",
     discounted_price: "",
     description: "",
   })
   const [loading, setLoading] = useState(false)
-  const [category, setCategory] = useState([])
+  // const [category, setCategory] = useState([])
 
   const handleChange = (e) => {
     setProduct(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -45,18 +45,18 @@ const EditProduct = () => {
     }
   }
 
-  const getCategories = async () => {
-    try {
-      const response = await apiClient.get("/category", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      setCategory(response.data.categories)
-    } catch (error) {
-      alert(error)
-    }
-  }
+  // const getCategories = async () => {
+  //   try {
+  //     const response = await apiClient.get("/category", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     })
+  //     setCategory(response.data.categories)
+  //   } catch (error) {
+  //     alert(error)
+  //   }
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ const EditProduct = () => {
   useEffect(() => {
     const useToken = localStorage.getItem("token")
     setToken(useToken)
-    getCategories()
+    // getCategories()
     getProduct()
   }, [])
 

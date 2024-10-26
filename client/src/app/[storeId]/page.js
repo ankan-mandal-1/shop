@@ -6,7 +6,6 @@ import Product from "@/public/assets/product.png"
 import square from "@/public/assets/square.webp"
 import Link from "next/link";
 import EcomProductList from "../components/EcomProductList";
-import { Suspense } from 'react'
 // import { useParams } from "next/navigation";
 import apiClient from "@/utils/apiClient";
 import LoaderGray from "@/public/assets/loader-gray";

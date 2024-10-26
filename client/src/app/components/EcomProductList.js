@@ -31,21 +31,22 @@ const EcomProductList = async ({storeId}) => {
       alert("Something went wrong!")
     }
     const products = await response.json();
-  
 
   return (
     <>
-    {products.map((product, index) => (
+    {!products && <div>No products found!</div>}
+    {products && products.map((product, index) => (
         <div className={"product"} key={index}>
           <Link href={`/${storeId}/${product._id}`}>
             <div className={"img_bottom"}>
-                <img src={product.product_images[0].secure_url} className={"product_img"} alt={product.title} />
+                <img src={product?.product_images[0]?.secure_url} className={"product_img"} alt={product?.title} />
             </div>
-            <p className={"title"}>{product.title.slice(0, 50)}...</p>
-            <p className={"strike_price"}>Rs {product.original_price.toLocaleString()}</p>
+            <p className={"title"}>{product?.title?.slice(0, 50)}...</p>
+            {/* <p className={"strike_price"}>Rs {product?.original_price?.toLocaleString()}</p> */}
+            <p className={"strike_price"}>{product.original_price && <>Rs {product?.original_price?.toLocaleString()}</>}</p>
             </Link>
             <div className={"original_price"}>
-                <p>Rs {product.discounted_price.toLocaleString()}</p>
+                <p>Rs {product?.discounted_price?.toLocaleString()}</p>
                 <AddToCartSingle product={product}/>
             </div>
         </div>

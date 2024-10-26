@@ -5,7 +5,7 @@ import "./DashBoardHeader.css"
 const DashBoardHeader = () => {
   return (
     <div className='dashboard_header'>
-        <Image src={logo} width={140} alt="Fleket Logo" />
+        <Image src={logo} width={140} height={35} alt="Fleket Logo" />
     </div>
   )
 }

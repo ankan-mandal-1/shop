@@ -135,6 +135,13 @@ const onboard = async (req, res) => {
 
     const result = await cloudinary.uploader.upload(base64DataUri, {
       folder: "shop",
+      transformation: [
+        {
+          quality: 30, // Adjust the quality as needed (0-100)
+          fetch_format: "auto",
+          width: 150,
+        }
+      ]
     });
 
     const store = await UserModel.updateOne(

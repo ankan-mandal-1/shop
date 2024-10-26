@@ -34,6 +34,48 @@ const getSingleProduct = async (req, res) => {
     }
 }
 
+//Test Multer Memory Storage
+// const addProductTest = async (req, res) => {
+//     try {
+//         const dataUri = (file) => {
+//             const { mimetype, buffer } = file;
+//             const base64 = buffer.toString("base64");
+//             return `data:${mimetype};base64,${base64}`;
+//         };
+
+//         let productArray = [];
+
+//         // Use Promise.all to wait for all image uploads to complete
+//         const imageUploads = req.files.map(async (image) => {
+//             const base64DataUri = dataUri(image);
+
+//             const result = await cloudinary.uploader.upload(base64DataUri, {
+//                 folder: "shop",
+//                 transformation: [
+//                     {
+//                         quality: 30, // Adjust the quality as needed (0-100)
+//                         fetch_format: "auto",
+//                         width: 150,
+//                     }
+//                 ]
+//             });
+
+//             return {
+//                 secure_url: result.secure_url,
+//                 public_id: result.public_id
+//             };
+//         });
+
+//         // Await all uploads to finish
+//         productArray = await Promise.all(imageUploads);
+
+//         return res.status(200).json(productArray);
+//     } catch (error) {
+//         console.error('Error uploading images:', error);
+//         return res.status(500).json({ message: 'Image upload failed', error: error.message });
+//     }
+// };
+
 const addProduct = async (req, res) => {
 
     if(!req.user.storeSlug){
@@ -47,9 +89,6 @@ const addProduct = async (req, res) => {
         return res.status(400).json({message: "Title & Discounted Price fields are required!"})
     }
 
-    // if(!category){
-    //     return res.status(400).json({message: "Please create a category!"})
-    // }
 
     try {
         if(!product_images){
@@ -67,55 +106,141 @@ const addProduct = async (req, res) => {
         }
 
         // ------------------------------------
-    
-        let images = [];
-        product_images.map(image => images.push(`./uploads/` + image.filename))
-        console.log(images)
-        let upload_images = []
-        for (const image of images) {
 
-            //Upload to Cloudinary one by one
-            const result = await cloudinary.uploader.upload(image, {
+        const dataUri = (file) => {
+            const { mimetype, buffer } = file;
+            const base64 = buffer.toString("base64");
+            return `data:${mimetype};base64,${base64}`;
+        };
+
+        let productArray = [];
+
+        // Use Promise.all to wait for all image uploads to complete
+        const imageUploads = req.files.map(async (image) => {
+            const base64DataUri = dataUri(image);
+
+            const result = await cloudinary.uploader.upload(base64DataUri, {
+                folder: "shop",
                 transformation: [
-                  {
-                    quality: 30, // Adjust the quality as needed (0-100)
-                    fetch_format: "auto",
-                    width: 500,
-                  }
+                    {
+                        quality: 30, // Adjust the quality as needed (0-100)
+                        fetch_format: "auto",
+                        width: 500,
+                    }
                 ]
-              });
-            upload_images.push({public_id: result.public_id, secure_url: result.secure_url})
+            });
+
+            return {
+                secure_url: result.secure_url,
+                public_id: result.public_id
+            };
+        });
+
+        // Await all uploads to finish
+        productArray = await Promise.all(imageUploads);
+
+        // -------
     
-          }
-          console.log(upload_images)
           const addProduct = new ProductModel({
             title, 
-            // category, 
             original_price, 
             discounted_price, 
             description,
-            product_images: upload_images,
+            product_images: productArray,
             owner: req.user._id,
             storeSlug: req.user.storeSlug
         })
         const saveProduct = await addProduct.save()
-
-        images.forEach(async (image) => (
-            //Delete Files from ./upload folder
-            unlink(image, (err) => {
-                if (err) {
-                  console.error(err);
-                } else {
-                  console.log('File is deleted.');
-                }
-              })
-        ))
 
         return res.status(200).json({message: "Product created successfully!", product: saveProduct})
     } catch (error) {
         return res.status(400).json({message: error.message})
     }
 }
+
+// Original Code
+// const addProduct = async (req, res) => {
+
+//     if(!req.user.storeSlug){
+//         return res.status(400).json({message: "Please create a store!"})
+//     }
+
+//     const {title, original_price, discounted_price, description} = req.body;
+//     const product_images = req.files;
+
+//     if(!title || !discounted_price){
+//         return res.status(400).json({message: "Title & Discounted Price fields are required!"})
+//     }
+
+//     // if(!category){
+//     //     return res.status(400).json({message: "Please create a category!"})
+//     // }
+
+//     try {
+//         if(!product_images){
+//             const addProduct = new ProductModel({
+//                 title, 
+//                 // category, 
+//                 original_price, 
+//                 discounted_price, 
+//                 description,
+//                 owner: req.user._id,
+//                 storeSlug: req.user.storeSlug
+//             })
+//             const saveProduct = await addProduct.save()
+//             return res.status(200).json({message: "Product created successfully!", product: saveProduct})
+//         }
+
+//         // ------------------------------------
+    
+//         let images = [];
+//         product_images.map(image => images.push(`./uploads/` + image.filename))
+//         console.log(images)
+//         let upload_images = []
+//         for (const image of images) {
+
+//             //Upload to Cloudinary one by one
+//             const result = await cloudinary.uploader.upload(image, {
+//                 transformation: [
+//                   {
+//                     quality: 30, // Adjust the quality as needed (0-100)
+//                     fetch_format: "auto",
+//                     width: 500,
+//                   }
+//                 ]
+//               });
+//             upload_images.push({public_id: result.public_id, secure_url: result.secure_url})
+    
+//           }
+//           console.log(upload_images)
+//           const addProduct = new ProductModel({
+//             title, 
+//             // category, 
+//             original_price, 
+//             discounted_price, 
+//             description,
+//             product_images: upload_images,
+//             owner: req.user._id,
+//             storeSlug: req.user.storeSlug
+//         })
+//         const saveProduct = await addProduct.save()
+
+//         images.forEach(async (image) => (
+//             //Delete Files from ./upload folder
+//             unlink(image, (err) => {
+//                 if (err) {
+//                   console.error(err);
+//                 } else {
+//                   console.log('File is deleted.');
+//                 }
+//               })
+//         ))
+
+//         return res.status(200).json({message: "Product created successfully!", product: saveProduct})
+//     } catch (error) {
+//         return res.status(400).json({message: error.message})
+//     }
+// }
 
 const editProduct = async (req, res) => {
     const {id} = req.params;

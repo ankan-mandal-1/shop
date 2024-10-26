@@ -114,7 +114,7 @@ const AddPage = () => {
         <h1>Add Product</h1>
         <div>
           <label>Product Name</label>
-          <input name="title" placeholder="Product Name" className={styles.input} value={product.title} onChange={handleChange}/>
+          <input name="title" placeholder="Product Name" className={styles.input} value={product.title} onChange={handleChange} required/>
         </div>
         {/* <div>
           <label>Product Category</label>
@@ -127,16 +127,16 @@ const AddPage = () => {
         </div> */}
         <div>
           <label>Original Price</label>
-          <input name="original_price" placeholder="Original Price" className={styles.input} value={product.original_price} onChange={handleChange}/>
+          <input name="original_price" placeholder="Original Price" className={styles.input} value={product.original_price} onChange={handleChange} required/>
         </div>
         <div>
           <label>Discounted Price </label>
-          <input name="discounted_price" placeholder="Discounted Price" className={styles.input} value={product.discounted_price} onChange={handleChange}/>
+          <input name="discounted_price" placeholder="Discounted Price" className={styles.input} value={product.discounted_price} onChange={handleChange} required/>
         </div>
         {product.discounted_price && <div style={{flexDirection: "row", gap: "10px"}}>₹ {product.discounted_price} <span style={{textDecoration: "line-through"}}>₹ {product.original_price}</span></div>}
         <div>
           <label>Description</label>
-          <textarea name="description" placeholder="Description" className={styles.input} value={product.description} onChange={handleChange}/>
+          <textarea name="description" placeholder="Description" className={styles.input} value={product.description} onChange={handleChange} required/>
         </div>
         <div>
           <label>Product Image (4 images only)</label>

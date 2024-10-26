@@ -43,7 +43,7 @@ const OnBoard = () => {
       })
       localStorage.setItem("storeSlug", link)
       toast.success(res.data.message)
-      localStorage.setItem("store", res.data.user)
+      localStorage.setItem("store", name)
       router.push("/dashboard")
       setLoading(false)
     } catch (error) {
@@ -57,6 +57,10 @@ const OnBoard = () => {
   useEffect(() => {
     const useToken = localStorage.getItem("token")
     setToken(useToken)
+
+    if(localStorage.getItem("storeSlug")){
+      router.push("/dashboard")
+    }
   }, [])
 
   return (
@@ -69,7 +73,7 @@ const OnBoard = () => {
         </div>
         <div className={styles.input_fields}>
           <label className={styles.upload}>
-            <input type="file" hidden onChange={handleImage}/>
+            <input type="file" hidden onChange={handleImage} accept="image/png, image/gif, image/jpeg, image/jpg" />
             <ArrowShapeUpFromLine />Click here to Upload Logo
           </label><br/>
           <label>Store Name</label><br/>

@@ -15,14 +15,6 @@ const DashboardPage = () => {
   const [token, setToken] = useState("")
   const [store, setStore] = useState("")
 
-  if(!token){
-    router.push("/login")
-  }
-
-  if(!store){
-    router.push("/onboard")
-  }
-
   const sale = 12345
 
   useEffect(() => {
@@ -31,7 +23,18 @@ const DashboardPage = () => {
 
     const useStore = localStorage.getItem("storeSlug")
     setStore(useStore)
-  })
+
+    if(!useToken){
+      router.push("/login")
+      return;
+    }
+  
+    if(!useStore){
+      router.push("/onboard")
+      return;
+    }
+  }, [])
+
 
   return (
     <div className="dashboard_container">
@@ -56,7 +59,7 @@ const DashboardPage = () => {
         </div>
 
         <div className={styles.store_link}>
-          <div className={styles.store_text}><Image src={link} />Store Link</div>
+          <div className={styles.store_text}><Image src={link} alt="store link"/>Store Link</div>
           <div className={styles.store_url}>https://www.fleket.com/{store}</div>
           <button>Copy Link</button>
         </div>
