@@ -59,7 +59,9 @@ const OnBoard = () => {
     const useToken = localStorage.getItem("token")
     setToken(useToken)
 
-    if(localStorage.getItem("storeSlug")){
+    if(localStorage.getItem("storeSlug") === undefined){
+      // router.push("/dashboard")
+    } else {
       router.push("/dashboard")
     }
   }, [])
