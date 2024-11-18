@@ -78,7 +78,7 @@ const getSingleProduct = async (req, res) => {
 
 const addProduct = async (req, res) => {
 
-    if(!req.user.storeSlug){
+    if(!req.user?.storeSlug){
         return res.status(400).json({message: "Please create a store!"})
     }
 

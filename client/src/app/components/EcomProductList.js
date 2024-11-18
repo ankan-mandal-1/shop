@@ -26,7 +26,7 @@ const EcomProductList = async ({storeId}) => {
   //   fetchProducts()
   // }, [])
 
-    const response = await fetch(`http://localhost:8000/api/product/${storeId}`, { next: { revalidate: 300 } });
+    const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, { next: { revalidate: 300 } });
     if (!response.ok) {
       alert("Something went wrong!")
     }

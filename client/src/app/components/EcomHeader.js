@@ -3,10 +3,12 @@ import "./EcomHeader.css"
 import logo from "@/public/assets/logo.webp"
 import Link from "next/link"
 import EcomCartIcon from "./EcomCartIcon"
+import url from "@/utils/url"
 
 const EcomHeader = async ({storeId}) => {
 
-  const product = await fetch(`http://localhost:8000/api/auth/${storeId}`);
+  const product = await fetch(`https://fleket.vercel.app/api/auth/${storeId}`);
+  // const product = await fetch(`${url}/${storeId}`);
   const response = await product.json();
 
   return (

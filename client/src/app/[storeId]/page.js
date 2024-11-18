@@ -9,6 +9,8 @@ import EcomProductList from "../components/EcomProductList";
 // import { useParams } from "next/navigation";
 import apiClient from "@/utils/apiClient";
 import LoaderGray from "@/public/assets/loader-gray";
+import toast from "react-hot-toast";
+import { notFound } from 'next/navigation'
  
 // export const metadata = {
 //     title: "Ecommerce - Made with Fleket.com",
@@ -23,12 +25,16 @@ export async function generateMetadata({ params }){
   // const product = await fetch(`http://localhost:3001/products/${id}`);
   // const resMetadata = await product.json();
   
-  const res = await apiClient.get(`/auth/${storeId}`)
-
-  return {
-    title: `${res.data.storeName} - Made with Fleket.com`,
-    description: `Discover ${res.data.storeName}, your go-to eCommerce store for trendy gadgets, fashion, and home decor! Enjoy unbeatable prices, fast shipping, and exceptional customer service. Shop our curated collection and find the latest must-haves today!`,
-  };
+  try {
+    const res = await apiClient.get(`/auth/${storeId}`)
+    return {
+      title: `${res.data.storeName} - Made with Fleket.com`,
+      description: `Discover ${res.data.storeName}, your go-to eCommerce store for trendy gadgets, fashion, and home decor! Enjoy unbeatable prices, fast shipping, and exceptional customer service. Shop our curated collection and find the latest must-haves today!`,
+    };
+  } catch (error) {
+    console.log(error)
+    return notFound()
+  }
 }
 
 function StorePage({ params }) {

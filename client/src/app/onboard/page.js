@@ -49,6 +49,7 @@ const OnBoard = () => {
     } catch (error) {
       // alert(error.response.data.message)
       setError(true)
+      console.log(error)
       toast.error(error.response.data.message)
       setLoading(false)
     }

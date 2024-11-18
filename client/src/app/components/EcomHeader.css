@@ -19,6 +19,7 @@
 .logo{
     width: 60px;
     height: 60px;
+    object-fit: contain;
 }
 .cart_icon{
     width: 30px;

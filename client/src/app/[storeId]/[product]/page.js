@@ -3,16 +3,18 @@ import AddToCart from "@/app/components/AddToCart";
 import styles from "./page.module.css"
 import ProductImage from '@/app/components/ProductImage'
 import BuyNow from "@/app/components/BuyNow";
+import url from "@/utils/url";
 // import { useParams } from 'next/navigation';
 // import apiClient from '@/utils/apiClient'
 // import { useEffect, useState } from 'react'
 // import LoaderGray from '@/public/assets/loader-gray'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }){
   // read route params
   const productId = params.product;
   
-  const product = await fetch(`http://localhost:8000/api/product/single/${productId}`, { next: { revalidate: 300 } });
+  const product = await fetch(`https://fleket.vercel.app/api/product/single/${productId}`, { next: { revalidate: 300 } });
   const singleProd = await product.json();
 
   return {
@@ -47,8 +49,16 @@ const SingleProduct = async ({params}) => {
   //   getProduct()
   // }, [])
 
-  const product = await fetch(`http://localhost:8000/api/product/single/${productId}`, { next: { revalidate: 300 } });
-  const singleProd = await product.json();
+  let singleProd;
+
+  try {
+    const product = await fetch(`https://fleket.vercel.app/api/product/single/${productId}`, { next: { revalidate: 300 } });
+    singleProd = await product.json();
+    console.log((singleProd))
+  } catch (error) {
+    console.log(error)
+    return notFound()
+  }
 
 
   // if(loading){

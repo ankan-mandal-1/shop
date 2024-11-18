@@ -6,6 +6,7 @@ import sales from "@/public/assets/sales.png"
 import orders from "@/public/assets/orders.png"
 import link from "@/public/assets/link.png"
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const DashboardPage = () => {
 
@@ -15,7 +16,16 @@ const DashboardPage = () => {
   const [token, setToken] = useState("")
   const [store, setStore] = useState("")
 
-  const sale = 12345
+  const sale = 0
+
+  const copyText = async () => {
+    try {
+      await navigator.clipboard.writeText(`https://www.fleket.com/${store}`);
+      toast.success("URL Copied!")
+    } catch (error) {
+      toast.error("Something went wrong!")
+    }
+  }
 
   useEffect(() => {
     const useToken = localStorage.getItem("token")
@@ -61,7 +71,7 @@ const DashboardPage = () => {
         <div className={styles.store_link}>
           <div className={styles.store_text}><Image src={link} alt="store link"/>Store Link</div>
           <div className={styles.store_url}>https://www.fleket.com/{store}</div>
-          <button>Copy Link</button>
+          <button onClick={copyText}>Copy Link</button>
         </div>
     </div>
   )
