@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../(auth)/page.module.css";
 import Link from "next/link";
 import { toast, Toaster } from "react-hot-toast";
@@ -39,6 +39,12 @@ const RegisterForm = () => {
       toast.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      router.push("/dashboard")
+    }
+  }, [])
 
   return (
     <>

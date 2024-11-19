@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/app/(auth)/page.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -32,6 +32,12 @@ const LoginForm = () => {
       toast.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      router.push("/dashboard")
+    }
+  }, [])
 
   return (
     <>
