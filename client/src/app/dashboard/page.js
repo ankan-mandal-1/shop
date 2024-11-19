@@ -39,7 +39,7 @@ const DashboardPage = () => {
       return;
     }
   
-    if(!useStore){
+    if(useStore === "undefined"){
       router.push("/onboard")
       return;
     }
