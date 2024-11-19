@@ -57,8 +57,9 @@ const OnBoard = () => {
 
   useEffect(() => {
     const useToken = localStorage.getItem("token")
+    const storeSlug = localStorage.getItem("storeSlug")
     setToken(useToken)
-    if(localStorage.getItem("storeSlug") === "undefined"){
+    if(storeSlug === "undefined" || storeSlug === null){
       return;
     } else {
       router.push("/dashboard")

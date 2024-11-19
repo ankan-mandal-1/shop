@@ -14,6 +14,7 @@ const RegisterForm = () => {
     email: "",
     password: "",
   });
+  const[loading, setLoading] = useState(false)
 
   const handleOnChange = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -21,6 +22,7 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     if (!user.email || !user.password || !user.name) {
       toast.error("All Fields Required!");
       return;
@@ -33,8 +35,10 @@ const RegisterForm = () => {
       const res = await apiClient.post("/auth/register", user);
       toast.success(res.data.message);
       localStorage.setItem("token", res.data.token);
+      setLoading(false)
       router.push("/onboard");
     } catch (error) {
+      setLoading(false)
       console.log(error);
       toast.error(error.response.data.message);
     }
@@ -96,7 +100,7 @@ const RegisterForm = () => {
           </Link>
         </div>
         <div>
-          <button>Register</button>
+          <button>{loading ? <>Loading...</> : <>Register</>}</button>
         </div>
       </form>
     </>
