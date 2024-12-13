@@ -1,5 +1,8 @@
-import DashBoardHeader from "../components/DashBoardHeader";
-import Footer from "../components/Footer";
+import Footer from "@/app/components/Footer";
+import LandingHeader from '@/app/components/LandingHeader'
+import styles from "@/app/page.module.css"
+import Image from 'next/image'
+import logo from "@/public/assets/fleket-logo.png"
 
 export const metadata = {
   title: {template: '%s | Fleket'},
