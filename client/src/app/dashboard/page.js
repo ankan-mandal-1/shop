@@ -8,10 +8,6 @@ import link from "@/public/assets/link.png"
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
-export const metadata = {
-  title: 'Dashboard',
-}
-
 const DashboardPage = () => {
 
   const router = useRouter()
@@ -52,6 +48,7 @@ const DashboardPage = () => {
 
 
   return (
+    <>
     <div className="dashboard_container">
       <div className={styles.dashboard}>
         <div className={styles.box}>
@@ -79,6 +76,7 @@ const DashboardPage = () => {
           <button onClick={copyText}>Copy Link</button>
         </div>
     </div>
+    </>
   )
 }
 

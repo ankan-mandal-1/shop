@@ -16,6 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/icon.png' />
+		  </head>
       <body className={`${bricolageGrotesque.variable} ${inter.variable}`}>
         <CartContextProvider>
           <Toaster />

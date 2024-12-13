@@ -1,7 +1,5 @@
 import DashBoardHeader from "../components/DashBoardHeader";
 import Footer from "../components/Footer";
-import Image from "next/image";
-import LandingHeader from "../components/LandingHeader";
 
 export const metadata = {
   title: {template: '%s | Fleket'},
@@ -12,16 +10,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={``}>
-      <div className={styles.container}>
-      <header className={styles.header}>
-        <div>
-          <Image src={logo} width={150} alt="fleket.com logo" />
-        </div>
-        <LandingHeader />
-      </header>
+        <DashBoardHeader />
         {children}
         <Footer />
-        </div>
       </body>
     </html>
   );
