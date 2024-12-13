@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const metadata = {
+  title: 'Privacy Policy',
+  description: "Read Fleket's Privacy Policy to understand how we collect, use, and protect your personal data. Learn about your privacy rights and how we handle your information securely. Your privacy matters!",
+}
+
 const PrivacyPolicy = () => {
   return (
     <div className="privacy-policy-container">

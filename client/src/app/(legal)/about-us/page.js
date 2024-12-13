@@ -3,7 +3,7 @@ import styles from "@/app/page.module.css"
 
 export const metadata = {
   title: 'About Us',
-  description: '...',
+  description: "Discover Fleket, the platform that lets you launch your dream online store for free. Learn about our mission to empower entrepreneurs with easy-to-use tools for building a successful e-commerce business.",
 }
 
 const AboutUs = () => {

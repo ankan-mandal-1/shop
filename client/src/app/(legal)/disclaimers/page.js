@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const metadata = {
+  title: 'Disclaimer',
+  description: "Read Fleket's Disclaimer to understand the limits of our liability and the accuracy of the information provided. Find out more about user responsibilities and third-party links on our platform.",
+}
+
 const Disclaimer = () => {
   return (
     <div className="disclaimer-container">

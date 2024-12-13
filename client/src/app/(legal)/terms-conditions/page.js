@@ -1,5 +1,10 @@
 import React from 'react';
 
+export const metadata = {
+  title: 'Terms & Conditions',
+  description: "Review Fleket's Terms and Conditions to understand our services, user responsibilities, and legal obligations. Our terms ensure a safe and transparent experience for all users. Read our full terms!",
+}
+
 const TermsAndConditions = () => {
   return (
     <div className="terms-container">
