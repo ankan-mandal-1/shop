@@ -1,5 +1,7 @@
 import DashBoardHeader from "../components/DashBoardHeader";
 import Footer from "../components/Footer";
+import Image from "next/image";
+import LandingHeader from "../components/LandingHeader";
 
 export const metadata = {
   title: {template: '%s | Fleket'},

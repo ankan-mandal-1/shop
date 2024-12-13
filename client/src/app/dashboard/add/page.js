@@ -9,6 +9,10 @@ import toast, { Toaster } from 'react-hot-toast';
 import apiClient from '@/utils/apiClient';
 import Loader from "@/public/assets/loader.js"
 
+export const metadata = {
+  title: 'Add Product',
+}
+
 const AddPage = () => {
 
   // const token = localStorage.getItem("token")

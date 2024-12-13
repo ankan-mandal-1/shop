@@ -8,6 +8,10 @@ import link from "@/public/assets/link.png"
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
+export const metadata = {
+  title: 'Dashboard',
+}
+
 const DashboardPage = () => {
 
   const router = useRouter()
