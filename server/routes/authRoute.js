@@ -1,5 +1,5 @@
 import express from "express";
-import { checkStoreCreated, login, onboard, register, getStore } from "../controllers/authController.js";
+import { checkStoreCreated, login, onboard, register, getStore, onboardEdit } from "../controllers/authController.js";
 import upload from "../middlewares/multer.js";
 import authenticate from "../middlewares/authenticate.js";
 const router = express.Router()
@@ -15,6 +15,7 @@ const router = express.Router()
 router.post("/login", login)
 router.post("/register", register)
 router.post("/onboard", authenticate, upload.single("image"), /*fileSizeLimitErrorHandler,*/ onboard)
+router.post("/onboard-edit", authenticate, upload.single("image"), /*fileSizeLimitErrorHandler,*/ onboardEdit)
 router.get("/check-store-created-or-not", authenticate, checkStoreCreated)
 router.get("/:storeSlug", getStore)
 

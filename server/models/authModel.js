@@ -3,13 +3,15 @@ import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
     email: {
         type: String,
         required: true,
         unique: true,
         lowercase: true,
+        trim: true // Removes leading and trailing spaces
     },
     password: {
         type: String,
@@ -17,11 +19,14 @@ const UserSchema = new mongoose.Schema({
     },
     storeName: {
         type: String,
-        default: "Store Name"
+        default: "Store Name",
+        lowercase: true,
+        trim: true
     },
     storeSlug: {
         type: String,
         lowercase: true,
+        trim: true
     },
     storeLogo: {
         type: String,

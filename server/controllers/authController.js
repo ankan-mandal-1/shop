@@ -155,6 +155,40 @@ const onboard = async (req, res) => {
   }
 };
 
+const onboardEdit = async (req, res) => {
+  console.log("HIT")
+  const storeLogo = req.file;
+
+  if (!storeLogo) {
+    return res.status(400).json({ message: "Logo is required!" });
+  }
+
+  try {
+
+    const base64DataUri = dataUri(storeLogo);
+
+    const result = await cloudinary.uploader.upload(base64DataUri, {
+      folder: "shop",
+      transformation: [
+        {
+          quality: 30, // Adjust the quality as needed (0-100)
+          fetch_format: "auto",
+          width: 150,
+        }
+      ]
+    });
+
+    const store = await UserModel.updateOne(
+      { email: req.user.email },
+      { storeLogo: result.secure_url },
+      { new: true }
+    );
+    return res.status(200).json({ message: "Store logo added successfully!" });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
+
 const checkStoreCreated = async (req, res) => {
   try {
     if(!req.user.storeSlug) {
@@ -170,7 +204,7 @@ const checkStoreCreated = async (req, res) => {
 const getStore = async (req, res) => {
   const {storeSlug} = req.params;
   const storeSlugLower = storeSlug.toLowerCase()
-  console.log(storeSlug)
+
   try {
     const data = await UserModel.findOne({storeSlug: storeSlugLower}).select("-password")
     if(!data){
@@ -186,4 +220,5 @@ const getStore = async (req, res) => {
   }
 }
 
-export { login, register, onboard, checkStoreCreated, getStore };
+
+export { login, register, onboard, checkStoreCreated, getStore, onboardEdit };

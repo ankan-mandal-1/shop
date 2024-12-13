@@ -32,6 +32,7 @@ const DashboardPage = () => {
     setToken(useToken)
 
     const useStore = localStorage.getItem("storeSlug")
+    
     setStore(useStore)
 
     if(!useToken){
@@ -39,7 +40,7 @@ const DashboardPage = () => {
       return;
     }
   
-    if(useStore === "undefined"){
+    if(useStore === "undefined" || useStore === null){
       router.push("/onboard")
       return;
     }

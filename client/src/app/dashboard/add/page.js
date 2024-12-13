@@ -35,8 +35,6 @@ const AddPage = () => {
     setSelectedFiles(e.target.files);
   }
 
-  console.log(selectedFiles)
-
   // const getCategories = async () => {
   //   try {
   //     const response = await apiClient.get("/category", {
