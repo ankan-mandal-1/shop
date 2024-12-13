@@ -22,7 +22,7 @@ const Disclaimer = () => {
       <section className="use-of-service">
         <h2>1. Use of the Service</h2>
         <p>
-          Your use of Fleket’s website and services is at your own risk. We cannot guarantee the accuracy or completeness of the content provided on our platform, and we do not assume responsibility for any errors, omissions, or misstatements. Additionally, Fleket is not responsible for any loss or damage arising from the use of the information on our website.
+          Your use of Fleket's website and services is at your own risk. We cannot guarantee the accuracy or completeness of the content provided on our platform, and we do not assume responsibility for any errors, omissions, or misstatements. Additionally, Fleket is not responsible for any loss or damage arising from the use of the information on our website.
         </p>
       </section>
       <br />
