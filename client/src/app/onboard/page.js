@@ -41,7 +41,7 @@ const OnBoard = () => {
           Authorization: `Bearer ${token}`
         }
       })
-      localStorage.setItem("storeSlug", link)
+      localStorage.setItem("storeSlug", res.data.store.storeSlug)
       toast.success(res.data.message)
       localStorage.setItem("store", name)
       router.push("/dashboard")

@@ -123,12 +123,12 @@ const onboard = async (req, res) => {
     }
 
     if (!req.file) {
-      const store = await UserModel.updateOne(
+      const store = await UserModel.findOneAndUpdate(
         { email: req.user.email },
         { storeName: storeNameLower, storeSlug: storeSlugLower },
         { new: true }
-      );
-      return res.status(200).json({ message: "Store created successfully!" });
+      )
+      return res.status(200).json({ message: "Store created successfully!", store });
     }
 
     const base64DataUri = dataUri(storeLogo);
@@ -144,19 +144,18 @@ const onboard = async (req, res) => {
       ]
     });
 
-    const store = await UserModel.updateOne(
+    const store = await UserModel.findOneAndUpdate(
       { email: req.user.email },
-      { storeName, storeSlug, storeLogo: result.secure_url },
+      { storeName: storeNameLower, storeSlug: storeSlugLower },
       { new: true }
     );
-    return res.status(200).json({ message: "Store created successfully!" });
+    return res.status(200).json({ message: "Store created successfully!", store });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
 };
 
 const onboardEdit = async (req, res) => {
-  console.log("HIT")
   const storeLogo = req.file;
 
   if (!storeLogo) {
