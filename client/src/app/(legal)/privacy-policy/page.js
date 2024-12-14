@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
 
       <section className="introduction">
         <p>
-          Fleket ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share your personal information when you use our website and services. By accessing or using our services, you agree to the collection and use of information in accordance with this policy.
+          Fleket (we, us, or our) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share your personal information when you use our website and services. By accessing or using our services, you agree to the collection and use of information in accordance with this policy.
         </p>
       </section>
       <br />
@@ -114,7 +114,7 @@ const PrivacyPolicy = () => {
       <br />
 
       <section className="children">
-        <h2>8. Children's Privacy</h2>
+        <h2>8. Children Privacy</h2>
         <p>
           Fleket does not knowingly collect or solicit personal information from anyone under the age of 13. If you are a parent or guardian and you believe that we have collected personal information about your child, please contact us immediately, and we will take steps to remove such information from our records.
         </p>

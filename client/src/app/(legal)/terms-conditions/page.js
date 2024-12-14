@@ -15,7 +15,7 @@ const TermsAndConditions = () => {
 
       <section className="intro">
         <p>
-          These Terms and Conditions ("Terms", "Terms and Conditions") govern your use of the Fleket website ("Service") and any related services provided by Fleket ("we", "us", or "our").
+          These Terms and Conditions (Terms, Terms and Conditions) govern your use of the Fleket website (Service) and any related services provided by Fleket (we, us, or our).
         </p>
         <p>
           By accessing or using the Service, you agree to comply with these Terms. If you do not agree to these Terms, please do not use the Service.
@@ -97,7 +97,7 @@ const TermsAndConditions = () => {
       <section className="disclaimer">
         <h2>8. Disclaimer of Warranties</h2>
         <p>
-          The Service is provided "as is" without warranties of any kind, either express or implied. Fleket does not guarantee that the Service will be error-free or uninterrupted, nor does it make any representations about the accuracy or reliability of the content on the Service.
+          The Service is provided as is without warranties of any kind, either express or implied. Fleket does not guarantee that the Service will be error-free or uninterrupted, nor does it make any representations about the accuracy or reliability of the content on the Service.
         </p>
       </section>
       <br />

@@ -14,7 +14,7 @@ const Disclaimer = () => {
 
       <section className="intro">
         <p>
-          The information provided by Fleket ("we", "us", or "our") on our website and services is for general informational purposes only. All information on the site is provided in good faith, and we make every effort to ensure that the information is accurate and up-to-date. However, we make no representations or warranties of any kind, express or implied, regarding the accuracy, completeness, reliability, or availability of the information provided.
+          The information provided by Fleket (we, us, or our) on our website and services is for general informational purposes only. All information on the site is provided in good faith, and we make every effort to ensure that the information is accurate and up-to-date. However, we make no representations or warranties of any kind, express or implied, regarding the accuracy, completeness, reliability, or availability of the information provided.
         </p>
       </section>
       <br />
@@ -22,7 +22,7 @@ const Disclaimer = () => {
       <section className="use-of-service">
         <h2>1. Use of the Service</h2>
         <p>
-          Your use of Fleket's website and services is at your own risk. We cannot guarantee the accuracy or completeness of the content provided on our platform, and we do not assume responsibility for any errors, omissions, or misstatements. Additionally, Fleket is not responsible for any loss or damage arising from the use of the information on our website.
+          Your use of Fleket website and services is at your own risk. We cannot guarantee the accuracy or completeness of the content provided on our platform, and we do not assume responsibility for any errors, omissions, or misstatements. Additionally, Fleket is not responsible for any loss or damage arising from the use of the information on our website.
         </p>
       </section>
       <br />
@@ -46,7 +46,7 @@ const Disclaimer = () => {
       <section className="no-warranty">
         <h2>4. No Warranty</h2>
         <p>
-          Fleket provides its services "as is" and makes no representations or warranties regarding the availability, reliability, or performance of the platform. We do not warrant that our website will be free of errors, bugs, or viruses, nor do we guarantee uninterrupted access to the Service. You assume all risks associated with using our platform.
+          Fleket provides its services as is and makes no representations or warranties regarding the availability, reliability, or performance of the platform. We do not warrant that our website will be free of errors, bugs, or viruses, nor do we guarantee uninterrupted access to the Service. You assume all risks associated with using our platform.
         </p>
       </section>
       <br />
