@@ -17,7 +17,7 @@ export default function Home() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div>
-          <Image src={logo} width={150} alt="fleket.com logo" />
+          <Image src={logo} width={140} alt="fleket.com logo" />
         </div>
         <LandingHeader />
       </header>
