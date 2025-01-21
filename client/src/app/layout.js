@@ -2,6 +2,7 @@ import CartContextProvider from "@/hooks/CartHook";
 import "./globals.css";
 import { Inter, Bricolage_Grotesque } from 'next/font/google'
 import { Toaster } from "react-hot-toast";
+import { GoogleAnalytics } from '@next/third-parties/google'
  
 // If loading a variable font, you don't need to specify the font weight
 const bricolageGrotesque = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-bricol', })
@@ -19,23 +20,14 @@ export default function RootLayout({ children }) {
       <head>
         <link rel='icon' href='/favicon.ico' />
         <link rel='icon' href='/icon.png' />
-	  
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQLR0C3ZC7"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments)}
-	  gtag('js', new Date());
-	
-	  gtag('config', 'G-PQLR0C3ZC7');
-	</script>
-		
-		  </head>
+	</head>
       <body className={`${bricolageGrotesque.variable} ${inter.variable}`}>
         <CartContextProvider>
           <Toaster />
         {children}
         </CartContextProvider>
       </body>
+	<GoogleAnalytics gaId="G-PQLR0C3ZC7" />
     </html>
   );
 }
