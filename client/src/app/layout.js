@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter', })
 
 export const metadata = {
   title: "Fleket.com - Launch your Dream store for Free!",
-  description: "Launch your dream store for Rs 0/- on Fleket.com! Create a stunning online store for FREE without any tech skills. Turn your ideas into income effortlessly. Start today!",
+  description: "Launch your dream store for Rs 0/- on Fleket.com. Create a stunning online store for FREE without any tech skills. Turn your ideas into income effortlessly. Start today",
 };
 
 export default function RootLayout({ children }) {
