@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel='icon' href='/favicon.ico' />
         <link rel='icon' href='/icon.png' />
-	  <!-- Google tag (gtag.js) -->
+	  
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-PQLR0C3ZC7"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
 	
 	  gtag('config', 'G-PQLR0C3ZC7');
 	</script>
+		
 		  </head>
       <body className={`${bricolageGrotesque.variable} ${inter.variable}`}>
         <CartContextProvider>
