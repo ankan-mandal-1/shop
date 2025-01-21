@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel='icon' href='/favicon.ico' />
         <link rel='icon' href='/icon.png' />
-		  </head>
+	</head>
       <body className={`${bricolageGrotesque.variable} ${inter.variable}`}>
         <CartContextProvider>
           <Toaster />
