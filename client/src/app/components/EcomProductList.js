@@ -33,9 +33,9 @@ const EcomProductList = async ({storeId}) => {
       'Pragma': 'no-cache', // For HTTP/1.0 compatibility
       'Expires': '0', // Ensure the response is considered expired
     },
-    next: { revalidate: 300 }, // You can keep this for Next.js' ISR if necessary
+    next: { revalidate: false }, // You can keep this for Next.js' ISR if necessary
   });
-  
+
     if (!response.ok) {
       alert("Something went wrong!")
     }
