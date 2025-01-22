@@ -26,14 +26,21 @@ const EcomProductList = async ({storeId}) => {
   //   fetchProducts()
   // }, [])
 
+  // const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     'Cache-Control': 'no-cache, no-store, must-revalidate', // Disable caching
+  //     'Pragma': 'no-cache', // For HTTP/1.0 compatibility
+  //     'Expires': '0', // Ensure the response is considered expired
+  //   },
+  //   next: { revalidate: false }, // You can keep this for Next.js' ISR if necessary
+  // });
+
   const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, {
     method: 'GET',
     headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate', // Disable caching
-      'Pragma': 'no-cache', // For HTTP/1.0 compatibility
-      'Expires': '0', // Ensure the response is considered expired
+      'Cache-Control': 'no-cache',  // Disable caching
     },
-    next: { revalidate: false }, // You can keep this for Next.js' ISR if necessary
   });
 
     if (!response.ok) {
