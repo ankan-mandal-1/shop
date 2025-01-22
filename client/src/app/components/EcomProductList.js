@@ -26,7 +26,16 @@ const EcomProductList = async ({storeId}) => {
   //   fetchProducts()
   // }, [])
 
-    const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, { next: { revalidate: 300 } });
+  const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, {
+    method: 'GET',
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate', // Disable caching
+      'Pragma': 'no-cache', // For HTTP/1.0 compatibility
+      'Expires': '0', // Ensure the response is considered expired
+    },
+    next: { revalidate: 300 }, // You can keep this for Next.js' ISR if necessary
+  });
+  
     if (!response.ok) {
       alert("Something went wrong!")
     }

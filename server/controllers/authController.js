@@ -131,7 +131,7 @@ const onboard = async (req, res) => {
       return res.status(200).json({ message: "Store created successfully!", store });
     }
 
-    const base64DataUri = dataUri(storeLogo);
+    const base64DataUri = await dataUri(storeLogo);
 
     const result = await cloudinary.uploader.upload(base64DataUri, {
       folder: "shop",
@@ -146,7 +146,7 @@ const onboard = async (req, res) => {
 
     const store = await UserModel.findOneAndUpdate(
       { email: req.user.email },
-      { storeName: storeNameLower, storeSlug: storeSlugLower },
+      { storeName: storeNameLower, storeSlug: storeSlugLower, storeLogo: result.secure_url },
       { new: true }
     );
     return res.status(200).json({ message: "Store created successfully!", store });
