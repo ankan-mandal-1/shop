@@ -37,10 +37,7 @@ const EcomProductList = async ({storeId}) => {
   // });
 
   const response = await fetch(`https://fleket.vercel.app/api/product/${storeId}`, {
-    method: 'GET',
-    headers: {
-      'Cache-Control': 'no-cache',  // Disable caching
-    },
+    cache: "no-store"
   });
 
     if (!response.ok) {
