@@ -2,6 +2,7 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 import UserModel from "../models/authModel.js";
 import { v2 as cloudinary } from "cloudinary";
+import orderModel from "../models/orderModel.js";
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -219,5 +220,45 @@ const getStore = async (req, res) => {
   }
 }
 
+const getTodayOrders = async (req, res) => {
 
-export { login, register, onboard, checkStoreCreated, getStore, onboardEdit };
+  const startOfDay = new Date();
+  startOfDay.setHours(0, 0, 0, 0); // Set to midnight
+
+  const endOfDay = new Date();
+  endOfDay.setHours(23, 59, 59, 999); // Set to the last millisecond of the day
+
+  orderModel.find({
+    storeSlug: req.user.storeSlug,
+    createdAt: {
+      $gte: startOfDay,
+      $lt: endOfDay,
+    },
+  }).populate("products.productId")
+    .then((data) => {
+      // console.log(data);
+      // return res.json({message: "Today's orders", length: data.length, orders: data})
+
+      let totalDiscountedPrice = 0;
+
+    data.forEach(order => {
+      order.products.forEach(product => {
+        // Assuming 'discounted_price' is a string (as per your example), so we parse it to a number
+        totalDiscountedPrice += parseFloat(product.productId.discounted_price) * product.quantity;
+      });
+    });
+
+    return res.json({
+      message: "Today's orders",
+      length: data.length,
+      totalDiscountedPrice: totalDiscountedPrice, // Format to 2 decimal places totalDiscountedPrice.toFixed(2)
+    })
+
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+}
+
+export { login, register, onboard, checkStoreCreated, getStore, onboardEdit, getTodayOrders };

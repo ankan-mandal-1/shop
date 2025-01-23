@@ -7,6 +7,7 @@ import orders from "@/public/assets/orders.png"
 import link from "@/public/assets/link.png"
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
+import apiClient from '@/utils/apiClient'
 
 const DashboardPage = () => {
 
@@ -15,6 +16,8 @@ const DashboardPage = () => {
   // const store = localStorage.getItem("storeSlug")
   const [token, setToken] = useState("")
   const [store, setStore] = useState("")
+  const [totalOrders, setTotalOrders] = useState(0)
+  const [totalRevenue, setTotalRevenue] = useState(0)
 
   const sale = 0
 
@@ -24,6 +27,20 @@ const DashboardPage = () => {
       toast.success("URL Copied!")
     } catch (error) {
       toast.error("Something went wrong!")
+    }
+  }
+
+  const getAllOrders = async (token) => {
+    try {
+      const res = await apiClient.get("/auth/today-orders", {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      setTotalOrders(res.data.length)
+      setTotalRevenue(res.data.totalDiscountedPrice)
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -44,6 +61,8 @@ const DashboardPage = () => {
       router.push("/onboard")
       return;
     }
+
+    getAllOrders(useToken);
   }, [])
 
 
@@ -56,7 +75,7 @@ const DashboardPage = () => {
               <Image src={sales} alt="sales" />
               <span>Sales</span>
             </div> 
-            <p className={styles.revenue}>$ {sale.toLocaleString()}</p>
+            <p className={styles.revenue}>Rs {totalRevenue.toLocaleString()}</p>
             <p className={styles.day}>Today</p>
         </div>
 
@@ -65,7 +84,7 @@ const DashboardPage = () => {
               <Image src={orders} alt="order" />
               <span>Orders</span>
             </div>
-            <p className={styles.revenue}> {sale.toLocaleString()}</p>
+            <p className={styles.revenue}> {totalOrders.toLocaleString()}</p>
             <p className={styles.day}>Today</p>
         </div>
         </div>
