@@ -201,25 +201,6 @@ const checkStoreCreated = async (req, res) => {
   }
 }
 
-const getStore = async (req, res) => {
-  const {storeSlug} = req.params;
-  const storeSlugLower = storeSlug.toLowerCase()
-
-  try {
-    const data = await UserModel.findOne({storeSlug: storeSlugLower}).select("-password")
-    if(!data){
-      return res.status(400).json({ message: "No store found" });
-    }
-    return res.status(200).json({
-      storeName: data.storeName,
-      storeLogo: data.storeLogo,
-      storeSlug: data.storeSlug
-    })
-  } catch (error) {
-    return res.status(400).json({ message: error.message });
-  }
-}
-
 const getTodayOrders = async (req, res) => {
 
   const startOfDay = new Date();
@@ -261,4 +242,23 @@ const getTodayOrders = async (req, res) => {
 
 }
 
-export { login, register, onboard, checkStoreCreated, getStore, onboardEdit, getTodayOrders };
+const getStore = async (req, res) => {
+  const {storeSlug} = req.params;
+  const storeSlugLower = storeSlug.toLowerCase()
+
+  try {
+    const data = await UserModel.findOne({storeSlug: storeSlugLower}).select("-password")
+    if(!data){
+      return res.status(400).json({ message: "No store found" });
+    }
+    return res.status(200).json({
+      storeName: data.storeName,
+      storeLogo: data.storeLogo,
+      storeSlug: data.storeSlug
+    })
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+}
+
+export { login, register, onboard, checkStoreCreated, getTodayOrders, getStore, onboardEdit };
