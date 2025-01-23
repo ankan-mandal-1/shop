@@ -1,6 +1,7 @@
 "use client"
 import styles from "@/app/onboard/page.module.css"
 import store_logo from "@/public/assets/store_logo.svg"
+import download from "@/public/assets/download.webp"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import {ArrowShapeUpFromLine} from '@gravity-ui/icons';
@@ -91,6 +92,7 @@ const Settings = () => {
         </div>
       </div>
       </form>
+        <Image src={download} width={200} className={stylesCustom.downloadBtn}/>
       <button onClick={logout} className={stylesCustom.logout}>Log Out</button>
     </div>
   )

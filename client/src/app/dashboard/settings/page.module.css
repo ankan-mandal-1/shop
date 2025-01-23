@@ -8,3 +8,11 @@
     margin: 20px 0;
     cursor: pointer;
 }
+.downloadBtn{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    display: flex;
+    margin-top: 10px;
+}
