@@ -42,7 +42,7 @@ export default function Home() {
       <div className={styles.demo_section}>
         <h2>How to make a Free Store?</h2>
         <div>
-          <iframe className={styles.video} src="https://www.youtube.com/embed/EzpA_tjPZJg"></iframe>
+          <iframe className={styles.video} src="https://www.youtube.com/embed/6Y9hyUj0G90"></iframe>
         </div>
       </div>
 
