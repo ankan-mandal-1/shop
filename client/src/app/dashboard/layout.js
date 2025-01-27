@@ -1,3 +1,4 @@
+import AppDownload from "../components/AppDownload";
 import BottomNavbar from "../components/BottomNavbar";
 import DashBoardHeader from "../components/DashBoardHeader";
 import Sidebar from "../components/Sidebar";
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={``}>
+        <AppDownload />
         <DashBoardHeader />
         {children}
         <BottomNavbar />

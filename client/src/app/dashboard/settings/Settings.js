@@ -92,7 +92,9 @@ const Settings = () => {
         </div>
       </div>
       </form>
+      <a href="https://archive.org/download/fleket-app/fleket-app.apk">
         <Image src={download} width={200} className={stylesCustom.downloadBtn} alt="Download button"/>
+        </a>
       <button onClick={logout} className={stylesCustom.logout}>Log Out</button>
     </div>
   )

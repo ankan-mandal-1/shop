@@ -1,0 +1,8 @@
+.appdownloadbar{
+    text-align: center;
+    background: khaki;
+    padding: 10px 0;
+}
+.appdownloadbar a {
+    text-decoration: underline;
+}
