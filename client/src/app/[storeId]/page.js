@@ -11,6 +11,7 @@ import apiClient from "@/utils/apiClient";
 import LoaderGray from "@/public/assets/loader-gray";
 import toast from "react-hot-toast";
 import { notFound } from 'next/navigation'
+import Ad300x250 from "../components/Ad300x250";
  
 // export const metadata = {
 //     title: "Ecommerce - Made with Fleket.com",
@@ -42,6 +43,9 @@ function StorePage({ params }) {
 
   return (
     <div className={styles.container}>
+      <Ad300x250 />
+      <Ad300x250 />
+      <Ad300x250 />
       <div className={styles.h1}><h1>Best Sellers</h1></div>
       <div className={styles.product_container}>
         <EcomProductList storeId={storeId} />
