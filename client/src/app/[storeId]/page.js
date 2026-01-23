@@ -43,9 +43,6 @@ function StorePage({ params }) {
 
   return (
     <div className={styles.container}>
-      <Ad300x250 />
-      <Ad300x250 />
-      <Ad300x250 />
       <div className={styles.h1}><h1>Best Sellers</h1></div>
       <div className={styles.product_container}>
         <EcomProductList storeId={storeId} />
